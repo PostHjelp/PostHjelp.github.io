@@ -1,0 +1,16 @@
+{
+    "short_name": "PostHjelp",
+    "name": "PostHjelp Web Application",
+    "icons": [
+      {
+        "src": "MEDIA/idfMm1ADA9_1717842206506.svg",
+        "type": "image/svg+xml",
+        "sizes": "any"
+      }
+    ],
+    "start_url": "index.html",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#e32d22",
+    "background_color": "#e32d22"
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHjelp</title>
+    <script src="../JS/authentication/auth.js" type="module" defer></script>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="../../MEDIA/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="../../CSS/vikarportal.css">
+    <link rel="stylesheet" href="../../CSS/spinner.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Innleggstavle</a>
+            <a href="arbeidsportal.html">Arbeidsportal</a>
+            <a href="vikarportal.html" style="background-color: white; color: #e32d22;">Vikarportal</a>
+        </nav>
+    </header>
+    <main>
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+        <section id="vikarliste"></section>
+    </main>
+    <footer>
+        <nav>
+            <div id="full_name"></div>
+            <a href="min_side.html">Min Side</a>
+            <div id="availability"></div>
+        </nav>
+    </footer>
+    <script type="module" src="../JS/cacheHandling.js"></script>
+    <script type="module" src="../JS/getUserInfo.js"></script>
+    <script type="module" src="../JS/vikarliste.js"></script>
+</body>
+</html>

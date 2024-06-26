@@ -1,0 +1,67 @@
+html, body {
+    height: 100%; /* Setter høyden på hele siden slik at vi kan sentrere vertikalt over hele siden */
+    margin: 0; /* Fjerner standardmarg */
+    padding: 0; /* Fjerner standardpolstring */
+    width: 100%;
+    display: flex; /* Bruker Flexbox til å tillate sentrering */
+    align-items: center; /* Senterer innhold vertikalt */
+    justify-content: center; /* Senterer innhold horisontalt */
+    font-family: 'Noto Sans Display', sans-serif; /* Setter standard skrifttype */
+    background: #ddd; /* Setter en bakgrunnsfarge */
+}
+
+main {
+    width: 90%; /* Setter bredden til hovedelementet til 90% av vindusbredden */
+    background: white; /* Hvit bakgrunn for formen */
+    display: grid;
+}
+
+.registrer-container {
+    display: grid;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.registrer-container div {
+    text-align: center; /* Senterer overskriften */
+    color: black; /* Mørk tekstfarge for lesbarhet */
+    font-size: 3rem;
+    padding-bottom: 2rem;
+}
+
+.registrer-container form {
+    display: grid;
+    grid-gap: 1rem;
+    justify-content: center;
+}
+
+input {
+    width: auto; /* Full bredde på input-feltene */
+    padding-top: 1rem; /* Gjør feltene større og lettere å klikke på */
+    padding-bottom: 1rem; /* Gjør feltene større og lettere å klikke på */
+    border: none; /* Subtil ramme */
+    background-color: rgb(244, 244, 244);
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+button {
+    padding-top: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    padding-bottom: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    background-color: #e32d22; /* En tiltalende blåfarge */
+    color: white; /* Hvit tekst */
+    border: none; /* Fjerner standardrammen */
+    font-size: 1.5rem;
+}
+
+main a {
+    padding-top: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    padding-bottom: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    background-color: #ebebeb; /* En tiltalende blåfarge */
+    color: white; /* Hvit tekst */
+    border: none; /* Fjerner standardrammen */
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+}
