@@ -5,5 +5,9 @@
 .env
 
 # Ignorer Firebase service account key
+<<<<<<< HEAD
 serviceAccountKey.json
 .vercel
+=======
+/server/serviceAccountKey.json
+>>>>>>> 2ab14a77561f9cc14e78ae4e2143c122945bef1f
