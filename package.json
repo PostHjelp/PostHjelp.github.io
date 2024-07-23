@@ -1,21 +1,14 @@
 {
     "name": "posthjelp",
     "version": "1.0.0",
-    "description": "",
+    "description": "Posthjelp backend",
     "main": "index.js",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "serve": "vite preview"
+      "start": "node index.js"
     },
     "dependencies": {
-        "cors": "^2.8.5",
-        "firebase": "^10.12.4",
-        "firebase-admin": "^12.2.0"
-    },
-    "devDependencies": {
-        "vite": "^4.5.3"
-    },
-    "author": "",
-    "license": "ISC"
-}
+      "express": "^4.17.1",
+      "firebase-admin": "^9.0.0",
+      "cors": "^2.8.5"
+    }
+  }

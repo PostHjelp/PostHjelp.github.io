@@ -3,7 +3,7 @@ import { db, addDoc, collection, getDocs } from './firebaseConfig.js';
 // Funksjon for å sende varsling
 async function sendNotification(title, body, tokens) {
     try {
-        const response = await fetch('https://posthjelp.github.io/sendNotification', {
+        const response = await fetch('https://post-hjelp.vercel.app/api/sendNotification', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

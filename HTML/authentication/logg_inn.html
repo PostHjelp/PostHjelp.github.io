@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostHjelp</title>
-    <link rel="stylesheet" href="../../CSS/logg_inn.css">
+    <link rel="stylesheet" href="../../css/logg_inn.css">
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
@@ -22,7 +22,7 @@
         <a href="auth.html">Tilbake</a>
     </main>
     <script type="module">
-        import { loginUser } from '../../JS/authentication/userHandling.js';
+        import { loginUser } from '../../js/authentication/userHandling.js';
 
         // Håndterer innlogging
         document.getElementById('login-form').addEventListener('submit', function(event) {
@@ -32,6 +32,6 @@
             loginUser(email, password);
         });
     </script>
-    <script src="../../JS/loggInn.js" type="module"></script>
+    <script src="../../js/loggInn.js" type="module"></script>
 </body>
 </html>

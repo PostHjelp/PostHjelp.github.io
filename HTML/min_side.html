@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostHjelp</title>
-    <script src="../JS/authentication/auth.js" type="module" defer></script>
+    <script src="../js/authentication/auth.js" type="module" defer></script>
     <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="../../MEDIA/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../../CSS/index.css">
-    <link rel="stylesheet" href="../../CSS/min_side.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/min_side.css">
 </head>
 <body>
     <header>
@@ -47,16 +47,16 @@
         </nav>
     </footer>
     <script type="module">
-        import { logoutUser } from '../JS/authentication/userHandling.js';
+        import { logoutUser } from '../js/authentication/userHandling.js';
 
         // Håndterer utlogging
         document.getElementById('logout-btn').addEventListener('click', function(event) {
             logoutUser();
         });
     </script>
-    <script type="module" src="../JS/authentication/userHandling.js"></script>
-    <script type="module" src="../JS/getUserInfo.js"></script>
-    <script type="module" src="../JS/cacheHandling.js"></script>
-    <script type="module" src="../JS/changeAvailability.js"></script>
+    <script type="module" src="../js/authentication/userHandling.js"></script>
+    <script type="module" src="../js/getUserInfo.js"></script>
+    <script type="module" src="../js/cacheHandling.js"></script>
+    <script type="module" src="../js/changeAvailability.js"></script>
 </body>
 </html>

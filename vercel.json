@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "api/**/*.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/api/sendNotification", "dest": "/api/sendNotification.js" },
+      { "src": "/api/deleteUser", "dest": "/api/deleteUser.js" }
+    ]
+  }

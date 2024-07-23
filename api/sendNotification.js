@@ -1,13 +1,22 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../../serviceAccountKey.json'); // Tilpass stien hvis nødvendig
+const cors = require('cors');
+const express = require('express');
+
+// Sett opp Firebase Admin SDK
+const serviceAccount = require('../serviceAccountKey.json');
 
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://posthjelp5068.firebaseio.com"
   });
 }
 
-module.exports = async (req, res) => {
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.post('/api/sendNotification', async (req, res) => {
   const { title, body, tokens } = req.body;
 
   if (!tokens || tokens.length === 0) {
@@ -28,4 +37,6 @@ module.exports = async (req, res) => {
   } catch (error) {
     res.status(500).send(`Error sending message: ${error.message}`);
   }
-};
+});
+
+module.exports = app;

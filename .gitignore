@@ -5,5 +5,5 @@ node_modules/
 .env
 
 # Ignorer Firebase service account key
-# /server/serviceAccountKey.json
+serviceAccountKey.json
 .vercel
