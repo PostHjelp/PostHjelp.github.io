@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHjelp</title>
+    <script src="../JS/authentication/authAdmin.js" type="module" defer></script>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="../../MEDIA/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="../../CSS/brukeradministrasjon.css">
+    <link rel="stylesheet" href="../../CSS/spinner.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Innleggstavle</a>
+            <a href="arbeidsportal.html">Arbeidsportal</a>
+            <a href="vikarportal.html">Vikarportal</a>
+        </nav>
+    </header>
+    <main class="brukeradministrasjon-main">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+        <section id="brukeradministration-content">
+            <div class="brukeradministration-content-section">
+                <div class="header">Legg til ansatt</div>
+                <form id="add-worker-form">
+                    <input id="worker-input" type="text" placeholder="Ansattnummer" required>
+                    <button id="worker-submit-btn" type="submit">Legg til</button>
+                </form>
+                <div id="all-workernumbers"></div>
+            </div>
+            <div class="brukeradministration-content-section">
+                <div class="header">Administrer ansatte</div>
+                <div id="workers-container"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <a href="min_side.html" style="grid-column: 2;">Min Side</a>
+        </nav>
+    </footer>
+    <script type="module" src="../JS/brukeradministrasjon.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHjelp</title>
+    <script src="../JS/authentication/auth.js" type="module" defer></script>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="../../MEDIA/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="../../CSS/min_side.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Innleggstavle</a>
+            <a href="arbeidsportal.html">Arbeidsportal</a>
+            <a href="vikarportal.html">Vikarportal</a>
+        </nav>
+    </header>
+    <main class="min_side_main">
+        <section>
+            <div class="user_info_container">
+                <div id="full_name"></div>
+                <div id="availability"></div>
+            </div>
+            <div class="status">
+                <label for="availability-status">Tilgjengelighetsstatus: </label>
+                <select id="availability-status">
+                    <option value="" disabled selected>Velg status</option>
+                    <option value="Tilgjengelig">Tilgjengelig</option>
+                    <option value="Delvis tilgjengelig">Delvis tilgjengelig</option>
+                    <option value="Ikke tilgjengelig">Ikke tilgjengelig</option>
+                </select>
+            </div>
+            <div class="administrate-btn-container">
+                <a href="brukeradministrasjon.html" id="administrate-btn" class="admin-only">
+                    <div id="administrate-btn-content">Administrer</div>
+                </a>
+            </div>
+            <button id="logout-btn">Logg ut</button>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <a href="min_side.html" style="grid-column: 2;">Min Side</a>
+        </nav>
+    </footer>
+    <script type="module">
+        import { logoutUser } from '../JS/authentication/userHandling.js';
+
+        // Håndterer utlogging
+        document.getElementById('logout-btn').addEventListener('click', function(event) {
+            logoutUser();
+        });
+    </script>
+    <script type="module" src="../JS/authentication/userHandling.js"></script>
+    <script type="module" src="../JS/getUserInfo.js"></script>
+    <script type="module" src="../JS/cacheHandling.js"></script>
+    <script type="module" src="../JS/changeAvailability.js"></script>
+</body>
+</html>

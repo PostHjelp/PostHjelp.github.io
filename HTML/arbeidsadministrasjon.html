@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHjelp</title>
+    <script src="../JS/authentication/authAdmin.js" type="module" defer></script>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="../../MEDIA/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="../../CSS/spinner.css">
+    <link rel="stylesheet" href="../../CSS/arbeidsportal.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Innleggstavle</a>
+            <a href="arbeidsportal.html" style="background-color: white; color: #e32d22;">Arbeidsportal</a>
+            <a href="vikarportal.html">Vikarportal</a>
+        </nav>
+    </header>
+    <main>
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+        <div class="add-work-container" id="admin-only-form">
+            <form id="add-work-form">
+                <input type="number" id="PiP" placeholder="PiP" required>
+                <input type="lastname" id="Postnummer" placeholder="Postnummer">
+                <input type="date" id="workDate" placeholder="dd.mm.yyyy" name="workDate" required>
+                <input type="number" id="Baskets" placeholder="Antall kasser">
+                <button type="submit">Legg til</button>
+            </form>
+        </div>
+        <div id="confirmation-container">
+            <div id="confirmation-messages"></div>
+        </div>
+    </main>
+    <footer>
+        <nav>
+            <div id="full_name"></div>
+            <a href="min_side.html">Min Side</a>
+            <div id="availability"></div>
+        </nav>
+    </footer>
+    <script type="module" src="../JS/cacheHandling.js"></script>
+    <script type="module" src="../JS/getUserInfo.js"></script>
+    <script type="module" src="../JS/arbeidsadministrasjon.js"></script>
+</body>
+</html>

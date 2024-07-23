@@ -1,0 +1,51 @@
+textarea {
+    height: 13rem;
+    padding: .5rem;
+    border: 0;
+    font-size: 1.2rem;
+    font-family: Arial, sans-serif;
+    resize: vertical; /* Lar brukeren endre høyden */
+    border-radius: .5rem;
+    background-color: rgb(244, 244, 244);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#admin-only-form {
+    display: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.add-post-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: #eaeaea;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-post-form {
+    display: grid;
+    grid-gap: 1rem;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add-post-form button {
+    background-color: #e32d22; /* En tiltalende blåfarge */
+    color: white; /* Hvit tekst */
+    border: none; /* Fjerner standardrammen */
+    font-size: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

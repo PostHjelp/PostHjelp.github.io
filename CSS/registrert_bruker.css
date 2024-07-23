@@ -1,0 +1,45 @@
+html, body {
+    height: 100%; /* Setter høyden på hele siden slik at vi kan sentrere vertikalt over hele siden */
+    margin: 0; /* Fjerner standardmarg */
+    padding: 0; /* Fjerner standardpolstring */
+    width: 100%;
+    display: flex; /* Bruker Flexbox til å tillate sentrering */
+    align-items: center; /* Senterer innhold vertikalt */
+    justify-content: center; /* Senterer innhold horisontalt */
+    font-family: 'Noto Sans Display', sans-serif; /* Setter standard skrifttype */
+    background: #e32d22; /* Setter en bakgrunnsfarge */
+}
+
+main {
+    width: 90%;
+    display: grid;
+    grid-gap: 15rem;
+}
+
+main .welcome-font {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-container {
+    display: grid;
+    grid-gap: 2rem;
+}
+
+main div a {
+    padding-top: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    padding-bottom: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    background-color: white; /* En tiltalende blåfarge */
+    color: black; /* Hvit tekst */
+    border: none; /* Fjerner standardrammen */
+    font-size: 1.6rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+main div .logg-inn-btn {
+    padding-top: 2rem; /* Polstring gjør knappen større og lettere å klikke på */
+    padding-bottom: 2rem; /* Polstring gjør knappen større og lettere å klikke på */
+}

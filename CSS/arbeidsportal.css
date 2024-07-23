@@ -1,0 +1,220 @@
+/* Colors */
+section .my-work-header, .confirmation-messages-element, .work-btn {
+    background-color: #28a745;
+}
+
+#arbeidsportal-main {
+    grid-gap: 1rem; /* Satt til det samme som i index, kanskje endre senere? */
+}
+
+#add-work-btn {
+    border-radius: .5rem;
+    display: none;
+    background-color: #e32d22;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-work-container, #confirmation-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #eaeaea;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-work-container {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#admin-only-form {
+    display: none;
+}
+
+#add-work-form {
+    display: grid;
+    grid-gap: 1rem;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add-work-form input {
+    width: auto; /* Full bredde på input-feltene */
+    padding-top: 1rem; /* Gjør feltene større og lettere å klikke på */
+    padding-bottom: 1rem; /* Gjør feltene større og lettere å klikke på */
+    border: none; /* Subtil ramme */
+    border-radius: none;
+    background-color: rgb(244, 244, 244);
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-work-form input:focus {
+    outline: none;
+}
+
+#add-work-form input[type="date"] {
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add-work-form button {
+    border-radius: .5rem;
+    background-color: #e32d22; /* En tiltalende blåfarge */
+    color: white; /* Hvit tekst */
+    border: none; /* Fjerner standardrammen */
+    font-size: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#confirmation-container {
+    display: none;
+    text-align: center;
+    background-color: #ddd;
+}
+
+#confirmation-messages {
+    display: grid;
+    font-size: 1rem;
+    font-size: 1.3rem;
+    background-color: #ddd;
+    grid-gap: 1rem;
+}
+
+.confirmation-messages-element {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #eaeaea;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-messages-element-title {
+    font-weight: bold;
+}
+
+#work-container {
+    display: grid;
+    grid-gap: 2rem;
+}
+
+#my-work-container {
+    display: none;
+    grid-gap: 2rem;
+    padding-bottom: 1rem;
+}
+
+.work-element {
+    border-radius: .5rem;
+    position: relative;
+    display: grid;
+    grid-gap: 1rem;
+    text-align: center;
+    background-color: #ededed;
+    padding-bottom: 0;
+    width: 100%;
+    padding-top: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.work-header{
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    font-weight: bold;
+    font-size: 2rem;
+    color: black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.taken-work-header {
+    background-color: #e32d22;
+}
+
+.not-my-work-header {
+    background-color: orange;
+}
+
+.work-underheader{
+    font-size: 1.5rem;
+}
+
+.work-baskets {
+    font-size: 1.5rem;
+}
+
+.work-btn {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-size: 1.75rem;
+    border: none;
+    border-radius: 0;
+    color: #f7f7f7;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.work-unavailable-txt {
+    background-color: #e1e1e1;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-size: 1.75rem;
+    border: none;
+    border-radius: 0;
+    color: black;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.overlay {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent svart overlay */
+    z-index: 1; /* Sørg for at overlayen vises over de andre elementene */
+    border-radius: .5rem;
+}
+
+#work-sort, #work-sort-pip {
+    font-size: 1.5rem;
+    border-radius: none;
+    background-color: #ededed;
+    border: .3rem #ededed;
+    box-sizing: border-box;
+    width: 100%;
+    color: black;
+    padding-left: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#work-sort:focus, #work-sort:focus {
+    outline: none;
+}

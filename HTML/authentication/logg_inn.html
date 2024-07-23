@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHjelp</title>
+    <link rel="stylesheet" href="../../CSS/logg_inn.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+</head>
+<body>
+    <main>
+        <div class="login-container">
+            <div>Logg inn</div>
+            <form id="login-form">
+                <input type="email" id="user-email" placeholder="E-post" required>
+                <input type="password" id="user-password" placeholder="Passord" required>
+                <button type="submit">Logg inn</button>
+            </form>
+        </div>
+        <a href="auth.html">Tilbake</a>
+    </main>
+    <script type="module">
+        import { loginUser } from '../../JS/authentication/userHandling.js';
+
+        // Håndterer innlogging
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('user-email').value;
+            const password = document.getElementById('user-password').value;
+            loginUser(email, password);
+        });
+    </script>
+    <script src="../../JS/loggInn.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHjelp</title>
+    <script src="/JS/authentication/auth.js" type="module" defer></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="/MEDIA/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="/CSS/spinner.css">
+    <link rel="stylesheet" href="/CSS/innlegg.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" style="background-color: white; color: #e32d22;">Innleggstavle</a>
+            <a href="/HTML/arbeidsportal.html">Arbeidsportal</a>
+            <a href="/HTML/vikarportal.html">Vikarportal</a>
+        </nav>
+    </header>
+    <main>
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+        <section id="posts-main">
+            <a href="/HTML/innleggsadministrasjon.html" id="add-post-btn" class="admin-only">Legg ut innlegg</a>
+            <div id="posts-container"></div>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <div id="full_name"></div>
+            <a href="/HTML/min_side.html">Min Side</a>
+            <div id="availability"></div>
+        </nav>
+    </footer>
+    <script type="module" src="/JS/notification.js"></script>
+    <script type="module" src="/JS/getUserInfo.js"></script>
+    <script type="module" src="/JS/cacheHandling.js"></script>
+    <script type="module" src="/JS/innlegg.js"></script>
+</body>
+</html>

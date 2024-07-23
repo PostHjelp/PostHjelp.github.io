@@ -1,0 +1,28 @@
+/* Container for å sentrere spinneren */
+.spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Bruk full visningshøyde for å dekke hele skjermen */
+    width: 100%; /* Dekker hele bredden av skjermen */
+}
+
+/* Stil og animasjon for spinneren */
+.spinner {
+    width: 4rem;
+    height: 4rem;
+    border: .4rem solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    border-top-color: #eaeaea; /* Blå farge på toppen av spinneren */
+    animation: spin .8s ease-in-out infinite;
+}
+
+/* Keyframes for spinner animasjonen */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

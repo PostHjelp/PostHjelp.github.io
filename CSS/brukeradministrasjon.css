@@ -1,0 +1,94 @@
+#add-worker-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 3rem;
+}
+
+#worker-input {
+    width: 100%;
+    padding-top: 1rem; /* Gjør feltene større og lettere å klikke på */
+    padding-bottom: 1rem; /* Gjør feltene større og lettere å klikke på */
+    border: none; /* Subtil ramme */
+    background-color: rgb(244, 244, 244);
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .5rem;
+}
+
+#worker-input:focus {
+    outline: none;
+}
+
+#worker-submit-btn {
+    padding-top: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    padding-bottom: 1rem; /* Polstring gjør knappen større og lettere å klikke på */
+    background-color: #e32d22; /* En tiltalende blåfarge */
+    color: white; /* Hvit tekst */
+    border: none; /* Fjerner standardrammen */
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#brukeradministration-content {
+    display: none;
+    grid-gap: 3rem;
+    margin-top: 1rem;
+}
+
+.brukeradministration-content-section {
+    display: grid;
+    grid-gap: 2rem;
+}
+
+#brukeradministration-content .header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#workers-container, #all-workernumbers {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.vikarliste_element {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background-color: #eaeaea;
+    height: 4.5rem;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+}
+
+.vikarliste_element_navn {
+    font-family: 'Noto Sans Display', sans-serif;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.1rem;
+    margin-top: auto;
+}
+
+.vikarliste_element_tlf {
+    font-family: 'Noto Sans Display', sans-serif;
+    text-align: left;
+    font-size: .9rem;
+    color:#676767;
+    margin-bottom: auto;
+}
+
+.vikarliste_element_status {
+    text-align: center;
+    font-size: .9rem;
+    margin: auto;
+}
+
+.vikarliste_element_navn_tlf_container {
+    display: grid;
+    grid-template-rows: 1.2fr 1fr;
+    grid-gap: .15rem;
+    margin-left: .75rem;
+}

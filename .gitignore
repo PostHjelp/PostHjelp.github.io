@@ -1,0 +1,8 @@
+# Ignorer node_modules
+node_modules/
+
+# Ignorer miljøvariabler
+.env
+
+# Ignorer Firebase service account key
+/server/serviceAccountKey.json

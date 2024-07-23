@@ -1,0 +1,39 @@
+.vikarliste_element {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    background-color: #ededed;
+    height: 4.5rem;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+}
+
+.vikarliste_element_navn {
+    font-family: 'Noto Sans Display', sans-serif;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.1rem;
+    margin-top: auto;
+}
+
+.vikarliste_element_tlf {
+    font-family: 'Noto Sans Display', sans-serif;
+    text-align: left;
+    font-size: .9rem;
+    color:#676767;
+    margin-bottom: auto;
+}
+
+.vikarliste_element_status {
+    text-align: center;
+    font-size: .9rem;
+    margin: auto;
+}
+
+.vikarliste_element_navn_tlf_container {
+    display: grid;
+    grid-template-rows: 1.2fr 1fr;
+    grid-gap: .15rem;
+    margin-left: .75rem;
+}

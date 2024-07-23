@@ -1,0 +1,30 @@
+/* Setter grunnleggende stil for hele siden */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e32d22; /* Lys grå bakgrunn for et rolig utseende */
+    font-family: 'Noto Sans Display', sans-serif; /* Modern og lesbar skrifttype */
+}
+
+main {
+    display: grid;
+    grid-gap: 2rem;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+a {
+    font-size: 2.3rem; /* Større skriftstørrelse for bedre lesbarhet */
+    color: black; /* Blå farge for lenker for å gi en følelse av interaktivitet */
+    background-color: white;
+    text-decoration: none; /* Fjerner understrek */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
