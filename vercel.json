@@ -1,10 +1,17 @@
 {
     "version": 2,
     "builds": [
-      { "src": "api/**/*.js", "use": "@vercel/node" }
+      { "src": "api/**/*.js", "use": "@vercel/node" },
+      { "src": "index.html", "use": "@vercel/static" },
+      { "src": "css/**", "use": "@vercel/static" },
+      { "src": "html/**", "use": "@vercel/static" },
+      { "src": "js/**", "use": "@vercel/static" },
+      { "src": "firebase-messaging-sw.js", "use": "@vercel/static" },
+      { "src": "manifest.json", "use": "@vercel/static" }
     ],
     "routes": [
       { "src": "/api/sendNotification", "dest": "/api/sendNotification.js" },
-      { "src": "/api/deleteUser", "dest": "/api/deleteUser.js" }
+      { "src": "/api/deleteUser", "dest": "/api/deleteUser.js" },
+      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
