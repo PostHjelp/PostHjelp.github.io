@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js';
 import { getMessaging, getToken, onMessage } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js';
-import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
+import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyD-mUuXP2mLqXxGA8DU5U9FWYwKING9I00",
@@ -17,7 +17,7 @@ const messaging = getMessaging(app);
 const db = getFirestore(app);
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/firebase-messaging-sw.js')
+  navigator.serviceWorker.register('../firebase-messaging-sw.js')
   .then((registration) => {
     console.log('Service Worker registered with scope:', registration.scope);
   }).catch((err) => {
@@ -33,11 +33,12 @@ async function requestPermission() {
       const currentToken = await getToken(messaging, { vapidKey: "BDxzmnzs0ebOgS3_dZeMkb4zWaSpOzgMHgrfJ8nJj3ucIpcDW5oTJZ3gBfY1oFb_QO-W4q40K05QnzrZpbQtHN0" });
       if (currentToken) {
         console.log('FCM Token:', currentToken);
-        
-        // Save the token to Firestore
-        const userTokenRef = doc(db, 'userTokens', currentToken);
-        await setDoc(userTokenRef, { token: currentToken });
-
+        // Check if token is already in Firestore
+        const tokenDoc = await getDoc(doc(db, 'userTokens', currentToken));
+        if (!tokenDoc.exists()) {
+          // Save the new token to Firestore
+          await setDoc(doc(db, 'userTokens', currentToken), { token: currentToken });
+        }
       } else {
         console.log('No registration token available. Request permission to generate one.');
       }
@@ -53,13 +54,10 @@ requestPermission();
 
 onMessage(messaging, (payload) => {
   console.log('Message received. ', payload);
-  // Customize notification here
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
     icon: payload.notification.icon
   };
-
-  // Display notification using the Notification API
   new Notification(notificationTitle, notificationOptions);
 });

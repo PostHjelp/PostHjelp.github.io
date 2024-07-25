@@ -2,56 +2,54 @@ import { db, addDoc, collection, getDocs } from './firebaseConfig.js';
 
 // Funksjon for å sende varsling
 async function sendNotification(title, body, tokens) {
-    try {
-        const response = await fetch('https://post-hjelp.vercel.app/api/sendNotification', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ title, body, tokens })
-        });
+  try {
+    const response = await fetch('https://us-central1-posthjelp5068.cloudfunctions.net/sendNotification', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, body, tokens })
+    });
 
-        console.log('Tokens: ', tokens);
-        
-        if (response.ok) {
-            console.log('Notification sent successfully.');
-        } else {
-            console.error('Failed to send notification.');
-        }
-    } catch (error) {
-        console.error('Error sending notification:', error);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+
+    const data = await response.json();
+    console.log('Successfully sent message:', data);
+  } catch (error) {
+    console.error('Error sending notification:', error);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const now = new Date();
+  const now = new Date();
 
-    const form = document.getElementById('add-post-form');
+  const form = document.getElementById('add-post-form');
 
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-        const innleggContent = document.getElementById('postfield').value;
-        const username = localStorage.getItem('fullName');
+    const innleggContent = document.getElementById('postfield').value;
+    const username = localStorage.getItem('fullName');
 
-        try {
-            const docRef = await addDoc(collection(db, "posts"), {
-                content: innleggContent,
-                username: username,
-                date: now
-            });
+    try {
+      const docRef = await addDoc(collection(db, "posts"), {
+        content: innleggContent,
+        username: username,
+        date: now
+      });
 
-            // Hent tokens fra databasen din
-            const tokensSnapshot = await getDocs(collection(db, 'userTokens'));
-            const tokens = tokensSnapshot.docs.map(doc => doc.data().token);
+      // Hent tokens fra databasen din
+      const tokensSnapshot = await getDocs(collection(db, 'userTokens'));
+      const tokens = tokensSnapshot.docs.map(doc => doc.data().token);
 
-            // Send varsel
-            await sendNotification('Nytt innlegg publisert!', innleggContent, tokens);
+      // Send varsel
+      await sendNotification('Nytt innlegg publisert!', innleggContent, tokens);
 
-            //window.location.href = "../index.html";
-        }
-        catch (error) {
-            console.log(error);
-        }
-    });
+      // window.location.href = "../index.html";
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });
