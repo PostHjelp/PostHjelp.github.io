@@ -5,7 +5,7 @@ export async function loginUser(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log("Bruker logget inn:", userCredential.user);
-        window.location.href = '../../index.html'; // Eller annen dashboard side
+        window.location.href = '../arbeidsportal.html'; // Eller annen dashboard side
     } catch (error) {
         console.error("Innloggingsfeil:", error);
         alert("Innloggingsfeil: " + error.message);
