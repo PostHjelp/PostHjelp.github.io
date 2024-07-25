@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Send varsel
       await sendNotification('Nytt innlegg publisert!', innleggContent, tokens);
 
-      // window.location.href = "../index.html";
+      //window.location.href = "../index.html";
     } catch (error) {
       console.log(error);
     }
