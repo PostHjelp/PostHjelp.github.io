@@ -1,7 +1,7 @@
 import { db, messaging, getToken, onMessage, doc, setDoc, getDoc } from './firebaseConfig.js';
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/firebase-messaging-sw.js')
+  navigator.serviceWorker.register('firebase-messaging-sw.js')
   .then((registration) => {
     console.log('Service Worker registered with scope:', registration.scope);
   }).catch((err) => {
@@ -36,7 +36,7 @@ async function requestPermission() {
 
 // Example: Call this function on a button click
 document.getElementById('notify-button').addEventListener('click', requestPermission);
-
+/*
 onMessage(messaging, (payload) => {
   console.log('Message received. ', payload);
   const notificationTitle = payload.notification.title;
@@ -46,3 +46,4 @@ onMessage(messaging, (payload) => {
   };
   new Notification(notificationTitle, notificationOptions);
 });
+*/

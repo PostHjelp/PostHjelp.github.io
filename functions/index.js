@@ -8,6 +8,8 @@ exports.sendNotification = functions.https.onRequest((req, res) => {
   cors(req, res, async () => {
     const {title, body, tokens} = req.body;
 
+    console.log("tokens: ", tokens);
+
     if (!tokens || tokens.length === 0) {
       res.status(400).json({error: "No tokens provided"});
       return;
