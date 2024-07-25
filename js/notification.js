@@ -36,13 +36,3 @@ async function requestPermission() {
 
 // Example: Call this function on a button click
 document.getElementById('notify-button').addEventListener('click', requestPermission);
-
-onMessage(messaging, (payload) => {
-  console.log('Message received. ', payload);
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: payload.notification.icon
-  };
-  new Notification(notificationTitle, notificationOptions);
-});
