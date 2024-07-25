@@ -50,8 +50,6 @@ async function requestPermission() {
   }
 }
 
-requestPermission();
-
 // Example: Call this function on a button click
 document.getElementById('notify-button').addEventListener('click', requestPermission);
 
