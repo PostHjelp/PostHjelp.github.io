@@ -2,6 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
 import { getFirestore, doc, arrayUnion, setDoc, getDoc, addDoc, deleteDoc, getDocs, updateDoc, collection, where, query, onSnapshot, orderBy } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
+import { getMessaging, getToken, onMessage } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js';
 
 // Firebase konfigurasjon
 const firebaseConfig = {
@@ -17,5 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const messaging = getMessaging(app);
 
-export { auth, orderBy, deleteDoc, arrayUnion, addDoc, onSnapshot, collection, where, query, updateDoc, getDocs, onAuthStateChanged, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, setDoc, doc, getDoc };
+export { auth, orderBy, messaging, getToken, onMessage, deleteDoc, arrayUnion, addDoc, onSnapshot, collection, where, query, updateDoc, getDocs, onAuthStateChanged, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, setDoc, doc, getDoc };
