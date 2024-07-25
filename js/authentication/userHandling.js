@@ -50,7 +50,7 @@ export async function registerUser(email, password, fullName, tlfNumber, jobID) 
         await setDoc(doc(db, "valid users", jobIDDoc.id), { available: false }, { merge: true });
 
         console.log("Bruker registrert og data lagret!");
-        window.location.href = '/HTML/authentication/registrert_bruker.html'; // Omdirigerer etter vellykket registrering
+        window.location.href = '/html/authentication/registrert_bruker.html'; // Omdirigerer etter vellykket registrering
     } catch (error) {
         console.error(error);
         handleRegistrationError(error);
@@ -61,7 +61,7 @@ export async function registerUser(email, password, fullName, tlfNumber, jobID) 
 export function logoutUser() {
     signOut(auth).then(() => {
         console.log('Bruker logget ut');
-        window.location.href = '/HTML/authentication/auth.html';
+        window.location.href = '/html/authentication/auth.html';
     }).catch((error) => {
         console.error('Feilmelding ', error);
     });
