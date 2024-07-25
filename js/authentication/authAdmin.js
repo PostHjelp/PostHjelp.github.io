@@ -8,7 +8,7 @@ onAuthStateChanged(auth, async (user) => {
     localStorage.removeItem('workDates');
     localStorage.removeItem('availability');
     localStorage.removeItem('role');
-    window.location.href = '/HTML/authentication/auth.html'; // Omdirigerer til innlogging hvis ikke innlogget
+    window.location.href = '/html/authentication/auth.html'; // Omdirigerer til innlogging hvis ikke innlogget
   } else {
     if (localStorage.getItem('role') === 'admin') {
         // Fortsett som normalt hvis brukeren er admin
