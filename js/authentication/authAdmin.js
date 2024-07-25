@@ -1,4 +1,4 @@
-import { db, doc, getDoc, auth, onAuthStateChanged } from '../firebaseConfig.js';
+import { auth, onAuthStateChanged } from '../firebaseConfig.js';
 
 // Autentiseringsstatus sjekk
 onAuthStateChanged(auth, async (user) => {
