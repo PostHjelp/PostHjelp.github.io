@@ -39,10 +39,10 @@ document.getElementById('notify-button').addEventListener('click', requestPermis
 
 onMessage(messaging, (payload) => {
   console.log('Message received. ', payload);
-  const notificationTitle = payload.notification.title;
+  const notificationTitle = payload.data.title;
   const notificationOptions = {
-    body: payload.notification.body,
-    icon: payload.notification.icon
+    body: payload.data.body,
+    icon: payload.data.icon
   };
   new Notification(notificationTitle, notificationOptions);
 });
