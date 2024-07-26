@@ -1,4 +1,26 @@
-import { db, addDoc, collection } from './firebaseConfig.js'
+import { db, addDoc, collection, getDocs } from './firebaseConfig.js'
+
+// Funksjon for å sende varsling
+async function sendNotification(title, body, tokens) {
+    try {
+      const response = await fetch('https://us-central1-posthjelp5068.cloudfunctions.net/sendNotification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title, body, tokens })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log('Successfully sent message:', data);
+    } catch (error) {
+      console.error('Error sending notification:', error);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const today = new Date();
@@ -42,6 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div>${postnummer}</div>
                 </div>
             `;
+
+            // Hent tokens fra databasen din
+            const tokensSnapshot = await getDocs(collection(db, 'userTokens'));
+            const tokens = tokensSnapshot.docs.map(doc => doc.data().token);
+
+            // Send varsel
+            await sendNotification('Nytt arbeid!', `PiP ${pip} | ${postnummer} | ${workDate}`, tokens);
         }
         catch (error) {
             console.log(error);
