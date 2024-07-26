@@ -12,40 +12,16 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const messaging = firebase.messaging();
-
-// Function to check if the message ID has already been processed
-function isDuplicateMessage(messageId) {
-  // Retrieve stored message IDs from local storage
-  let processedIds = JSON.parse(localStorage.getItem('processedMessageIds')) || [];
-  if (processedIds.includes(messageId)) {
-    return true; // Duplicate found
-  }
-
-  // Store the new message ID
-  processedIds.push(messageId);
-  localStorage.setItem('processedMessageIds', JSON.stringify(processedIds));
-
-  return false;
-}
 
 messaging.onBackgroundMessage(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  
-  // Check if the message ID is already processed
-  const messageId = payload.messageId || payload.data.messageId;
-  if (isDuplicateMessage(messageId)) {
-    console.log('Duplicate message, skipping notification.');
-    return; // Skip duplicate notification
-  }
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: '/media/idfMm1ADA9_1717842206506.svg',
+  };
 
-  // Show notification
-  if (payload.notification) {
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-      body: payload.notification.body,
-      icon: '/media/idfMm1ADA9_1717842206506.svg',
-    };
-    self.registration.showNotification(notificationTitle, notificationOptions);
-  }
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });

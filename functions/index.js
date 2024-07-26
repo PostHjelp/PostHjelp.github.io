@@ -16,7 +16,7 @@ exports.sendNotification = functions.https.onRequest((req, res) => {
     }
 
     const message = {
-      notification: {
+      data: {
         title: title,
         body: body,
       },
