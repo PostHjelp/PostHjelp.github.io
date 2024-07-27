@@ -41,6 +41,22 @@
     background-color: #f5f5f5;
 }
 
+#notify-button {
+    border-radius: .5rem;
+    display: grid;
+    background-color: green;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: none;
+    font-size: 1.7rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .post-content {
     font-size: 1.4rem;
     padding-top: 1rem;
