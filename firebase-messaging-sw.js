@@ -18,17 +18,6 @@ const messaging = firebase.messaging();
 self.addEventListener('push', function(event) {
   const data = event.data.json();
   console.log('[firebase-messaging-sw.js] Push received.', data);
-
-  const notificationTitle = data.title || 'Default Title';
-  const notificationOptions = {
-    body: data.body || 'Default body text',
-    icon: '/media/idfMm1ADA9_1717842206506.svg',
-  };
-
-  // Show the notification
-  event.waitUntil(
-    self.registration.showNotification(notificationTitle, notificationOptions)
-  );
 });
 
 messaging.onBackgroundMessage(function(payload) {
