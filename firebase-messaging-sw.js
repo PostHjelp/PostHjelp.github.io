@@ -14,7 +14,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
-// Push event listener for handling notifications
+// Push event listener for essentially serving as a wakeup call for the Service Worker
 self.addEventListener('push', function(event) {
   const data = event.data.json();
   console.log('[firebase-messaging-sw.js] Push received.', data);

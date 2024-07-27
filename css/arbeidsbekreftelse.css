@@ -1,0 +1,10 @@
+#candidate-list {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.candidate {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: white;
+}

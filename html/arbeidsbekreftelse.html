@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostHjelp</title>
-    <script src="../js/authentication/auth.js" type="module" defer></script>
+    <script src="../js/authentication/authAdmin.js" type="module" defer></script>
     <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="../../media/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/index.css">
-    <link rel="stylesheet" href="../../css/arbeidsportal.css">
     <link rel="stylesheet" href="../../css/spinner.css">
+    <link rel="stylesheet" href="../../css/arbeidsportal.css">
+    <link rel="stylesheet" href="../../css/arbeidsbekreftelse.css">
 </head>
 <body>
     <header>
@@ -23,16 +24,11 @@
         <div class="spinner-container">
             <div class="spinner"></div>
         </div>
-        <section id="arbeidsportal-main">
-            <a href="arbeidsadministrasjon.html" id="add-work-btn" class="admin-only">Legg til arbeid</a>
-            <a href="arbeidsbekreftelse.html" id="add-work-btn" class="admin-only">Arbeidstildeling</a>
-            <div id="my-work-container"></div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1rem">
-                <select id="work-sort"></select>
-                <select id="work-sort-pip"></select>
+        <div class="" id="admin-only-form">
+            <div id="candidate-list">
+                <!-- Liste over kandidater vil bli lagt til her -->
             </div>
-            <div id="work-container"></div>
-        </section>
+        </div>
     </main>
     <footer>
         <nav>
@@ -43,6 +39,6 @@
     </footer>
     <script type="module" src="../js/cacheHandling.js"></script>
     <script type="module" src="../js/getUserInfo.js"></script>
-    <script type="module" src="../js/arbeidsportal.js"></script>
+    <script type="module" src="../js/arbeidsbekreftelse.js"></script>
 </body>
 </html>

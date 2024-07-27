@@ -1,4 +1,4 @@
-import { db, addDoc, collection, getDocs } from './firebaseConfig.js'
+import { db, addDoc, collection, getDocs } from './firebaseConfig.js';
 
 // Funksjon for å sende varsling
 async function sendNotification(title, body, tokens) {

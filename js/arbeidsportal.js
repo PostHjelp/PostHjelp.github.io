@@ -1,5 +1,5 @@
 import { db, getDocs, collection, query, orderBy, deleteDoc } from './firebaseConfig.js';
-import { updateAvailabilityAndWorkDate } from './arbeidsportalAddWork.js';
+import { updateAvailabilityAndWorkDate, updateWorkForReview } from './arbeidsportalAddWork.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const addWorkBtn = document.getElementById("add-work-btn");
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const main = document.getElementById('arbeidsportal-main');
 
     try {
-        const q = query(workCollection, orderBy('available', 'desc'));
+        const q = query(workCollection, orderBy('available', 'desc', orderBy('date', 'asc')));
         const querySnapshot = await getDocs(q);
 
         const myWorkItems = [];
@@ -124,9 +124,12 @@ function bemannBtn() {
             const workPiP = event.target.getAttribute('data-work-pip');
             const workDate = event.target.getAttribute('data-work-date');
 
-            if (confirm(`Er du sikker på at du vil bemanne PiP ${workPiP}?`)) {
-                await updateAvailabilityAndWorkDate(userId, userName, workId, workDate);
+            let time = prompt("Vennligst oppgi et tidspunkt du kan komme inn:", "08:00");
+            if (time) {
+                await updateWorkForReview(userId, userName, workId, workDate, time);
                 window.location.href = "arbeidsportal.html";
+            } else {
+                alert("Tidspunkt ble ikke oppgitt, registreringen avbrutt.");
             }
         });
     });
@@ -135,10 +138,16 @@ function bemannBtn() {
 function getDateString(date) {
     const today = new Date();
     const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+
+    // Normaliser datoene for å ignorere tidskomponenten
+    const normalizedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const normalizedToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const normalizedTomorrow = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
+
     let dateString = "";
-    if (date.getTime() === today.setHours(0, 0, 0, 0)) {
+    if (normalizedDate.getTime() === normalizedToday.getTime()) {
         dateString = "I dag";
-    } else if (date.getTime() === tomorrow.setHours(0, 0, 0, 0)) {
+    } else if (normalizedDate.getTime() === normalizedTomorrow.getTime()) {
         dateString = "I morgen";
     } else {
         const day = date.getDate().toString().padStart(2, '0');
@@ -178,7 +187,7 @@ function createWorkSection(data, dateString, headerClass, isMyWork, user = '') {
         <div class="work-header ${headerClass}">PiP ${data.pip}</div>
         <div class="work-underheader">${data.postal_code}</div>
         ${data.baskets ? `<div class="work-baskets">${data.baskets} kasser</div>` : ''}
-        <div class="work-underheader" ${isMyWork ? `style="margin-bottom: 1rem;` : ''}">${dateString}</div>
+        <div class="work-underheader" ${isMyWork ? `style="margin-bottom: 1rem;` : ''}">${dateString}${data.time ? ` - ${data.time}` : ''}</div>
         ${!data.available && !isMyWork ? `<div class="work-unavailable-txt">Bemannet av <br> ${user}</div><div class="overlay"></div>` : ''}
     `;
     return section;
