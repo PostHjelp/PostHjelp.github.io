@@ -22,6 +22,21 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#my-work-btn {
+    border-radius: .5rem;
+    display: grid;
+    background-color: #e3e3e3;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .add-work-container, #confirmation-container {
     margin-top: 5%;
     margin-bottom: 5%;

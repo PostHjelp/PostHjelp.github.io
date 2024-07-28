@@ -11,17 +11,18 @@ async function fetchAndDisplayCandidates() {
 
         querySnapshot.forEach((doc) => {
             const data = doc.data();
-            if (data.candidates) {
+            if (data.candidates && data.candidates.length > 0) {
+                const groupKey = `${data.pip}-${doc.id}`; // Kombinere pip og workId
+                if (!groupedCandidates[groupKey]) {
+                    groupedCandidates[groupKey] = {
+                        pip: data.pip,
+                        postcode: data.postal_code,
+                        date: data.date,
+                        candidates: []
+                    };
+                }
                 data.candidates.forEach(candidate => {
-                    if (!groupedCandidates[data.pip]) {
-                        groupedCandidates[data.pip] = {
-                            pip: data.pip,
-                            postcode: data.postal_code,
-                            date: data.date,
-                            candidates: []
-                        };
-                    }
-                    groupedCandidates[data.pip].candidates.push({
+                    groupedCandidates[groupKey].candidates.push({
                         userId: candidate.userId,
                         userName: candidate.userName,
                         time: candidate.time,
@@ -38,12 +39,12 @@ async function fetchAndDisplayCandidates() {
     candidateContainer.innerHTML = '';
 
     // Iterer over grupperte kandidater for å generere HTML-struktur
-    for (const pip in groupedCandidates) {
-        if (groupedCandidates.hasOwnProperty(pip)) {
-            const workData = groupedCandidates[pip];
+    for (const groupKey in groupedCandidates) {
+        if (groupedCandidates.hasOwnProperty(groupKey)) {
+            const workData = groupedCandidates[groupKey];
             const date = new Date(workData.date);
             const dateString = getDateString(date);
-            
+
             const workElement = document.createElement('div');
             workElement.classList.add('work');
             workElement.innerHTML = `
