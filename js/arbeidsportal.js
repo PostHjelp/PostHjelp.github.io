@@ -1,5 +1,28 @@
 import { db, getDocs, collection, query, orderBy, deleteDoc } from './firebaseConfig.js';
 import { updateAvailabilityAndWorkDate, updateWorkForReview } from './arbeidsportalAddWork.js';
+import { fetchAdminTokens } from './tokenHandling.js';
+
+// Funksjon for å sende varsling
+async function sendNotification(title, body, tokens) {
+    try {
+      const response = await fetch('https://us-central1-posthjelp5068.cloudfunctions.net/sendNotification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title, body, tokens })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log('Successfully sent message:', data);
+    } catch (error) {
+      console.error('Error sending notification:', error);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
     const addWorkBtn = document.getElementById("add-work-btn");
@@ -131,7 +154,19 @@ function bemannBtn() {
                 if (timePattern.test(time)) {
                     // Formatet er riktig, bruk inputen
                     await updateWorkForReview(userId, userName, workId, workDate, time);
-                    window.location.href = "arbeidsportal.html";
+
+                    // Hent tokens for admin-brukere
+                    const adminTokens = await fetchAdminTokens();
+
+                    console.log(adminTokens);
+                    const notificationContent = `${userName} vil kjøre PiP ${workPiP} klokken ${time}`;
+
+                    // Send varsler til admin-brukere
+                    if (adminTokens.length > 0) {
+                        await sendNotification('Bemanningsforespørsel', notificationContent, adminTokens);
+                    }
+
+                    //window.location.href = "arbeidsportal.html";
                 } else {
                     // Feil format, vis feilmelding
                     alert("Tidspunktet må være i formatet HH:MM, for eksempel 08:00 eller 15:00.");

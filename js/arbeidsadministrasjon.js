@@ -1,4 +1,5 @@
 import { db, addDoc, collection, getDocs } from './firebaseConfig.js';
+import { fetchUserTokens } from './tokenHandling.js';
 
 // Funksjon for å sende varsling
 async function sendNotification(title, body, tokens) {
@@ -76,20 +77,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-// Funksjon for å hente tokens fra bruker-dokumenter
-async function fetchUserTokens() {
-  try {
-    // Hent alle brukerdokumentene fra 'users'-samlingen
-    const usersSnapshot = await getDocs(collection(db, 'users'));
-    // Map over dokumentene og hent ut 'token' for hver bruker
-    const tokens = usersSnapshot.docs
-      .map(doc => doc.data().token)
-      .filter(token => token); // Filtrer ut eventuelle undefined eller null tokens
-
-    return tokens;
-  } catch (error) {
-    console.error('Error fetching tokens:', error);
-    return [];
-  }
-}
