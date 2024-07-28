@@ -9,13 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export function updateUI(fullName, availability, role) {
-    const fullNameElement = document.getElementById("full_name");
-    const availabilityElement = document.getElementById("availability");
+    // Sjekk om vi er på 'min-side.html'
+    if (window.location.pathname.includes('min_side.html')) {
+        const fullNameElementTitle = document.getElementById("full_name_title");
+        const availabilityElement = document.getElementById("availability_title");
 
+        fullNameElementTitle.textContent = fullName;
+        availabilityElement.textContent = availability;
+        availabilityElement.style.color = getColorForAvailability(availabilityElement.textContent);
+    }
+
+    const fullNameElement = document.getElementById("full_name");
+    const myProfile = document.getElementById("my-profile-logo");
+    const myProfileContainer = document.getElementById("my-profile-container");
+
+    myProfile.style.color = getColorForAvailability(availability);
     fullNameElement.textContent = fullName;
-    availabilityElement.textContent = availability;
-    availabilityElement.style.color = getColorForAvailability(availabilityElement.textContent);
-    
+    myProfileContainer.style.display = "grid";
+
     // Vis admin-knappen hvis brukeren er admin
     if (role === 'admin') {
         showAdminElements();

@@ -13,7 +13,7 @@ async function isAdmin(user) {
 // Funksjon for å slette bruker fra Authentication
 async function deleteUserFromAuth(userId) {
     try {
-      const response = await fetch('https://posthjelp.github.io/deleteUser', {
+      const response = await fetch('https://us-central1-posthjelp5068.cloudfunctions.net/deleteUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

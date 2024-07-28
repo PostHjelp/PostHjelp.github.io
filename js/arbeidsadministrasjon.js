@@ -38,31 +38,45 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
 
         const pip = document.getElementById('PiP').value;
+        const place = document.getElementById('dropdown-box-place').value;
         const workDate = document.getElementById('workDate').value;
         const baskets = document.getElementById('Baskets').value;
-        let postnummer = document.getElementById('Postnummer').value;
+        let postalCode = document.getElementById('Postnummer').value;
 
-        if (postnummer == "") {
-            postnummer = "Hele ruten";
+        if (postalCode == "") {
+            postalCode = "Hele ruten";
         }
 
         const confirmationContainer = document.getElementById('confirmation-container');
         const confirmationMessages = document.getElementById('confirmation-messages');
 
         try {
-            const docRef = await addDoc(collection(db, "work"), {
-                pip: pip,
-                postal_code: postnummer,
-                date: workDate,
-                baskets: baskets,
-                available: true
-            });
+            // Bygg opp dokumentdata basert på felt som faktisk har verdi
+            const workData = {
+              pip: pip,
+              postal_code: postalCode,
+              date: workDate,
+              available: true
+            };
+
+            // Legg til place hvis det finnes
+            if (place) {
+              workData.place = place;
+            }
+
+            // Legg til baskets hvis det finnes
+            if (baskets) {
+              workData.baskets = baskets;
+            }
+
+            // Legg til dokumentet i Firestore
+            const docRef = await addDoc(collection(db, "work"), workData);
 
             confirmationContainer.style.display = "grid";
             confirmationMessages.innerHTML += `
                 <div class="confirmation-messages-element">
-                    <div class="confirmation-messages-element-title">PiP ${pip}</div>
-                    <div>${postnummer}</div>
+                    <div class="confirmation-messages-element-title">+ PiP ${pip}</div>
+                    <div>${postalCode}</div>
                 </div>
             `;
 
@@ -70,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const tokens = await fetchUserTokens();
 
             // Send varsel
-            await sendNotification('Nytt arbeid!', `PiP ${pip} | ${postnummer} | ${workDate}`, tokens);
+            await sendNotification('Nytt arbeid!', `PiP ${pip} | ${postalCode} | ${workDate}`, tokens);
         }
         catch (error) {
             console.log(error);

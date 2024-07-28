@@ -7,6 +7,7 @@
     <script src="../js/authentication/authAdmin.js" type="module" defer></script>
     <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="../../media/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/spinner.css">
     <link rel="stylesheet" href="../../css/arbeidsportal.css">
@@ -26,6 +27,12 @@
         <div class="add-work-container" id="admin-only-form">
             <form id="add-work-form">
                 <input type="number" id="PiP" placeholder="PiP" required>
+                <select name="" id="dropdown-box-place">
+                    <option value="" disabled selected>Sted</option>
+                    <option value="Minde">Minde</option>
+                    <option value="Sentrum">Sentrum</option>
+                    <option value="Fyllingsdalen">Fyllingsdalen</option>
+                </select>
                 <input type="lastname" id="Postnummer" placeholder="Postnummer">
                 <input type="date" id="workDate" placeholder="dd.mm.yyyy" name="workDate" required>
                 <input type="number" id="Baskets" placeholder="Antall kasser">
@@ -38,9 +45,12 @@
     </main>
     <footer>
         <nav>
-            <div id="full_name"></div>
-            <a href="min_side.html">Min Side</a>
-            <div id="availability"></div>
+            <a href="/html/min_side.html" id="my-profile">
+                <div id="my-profile-container">
+                    <i class="fas fa-user" id="my-profile-logo"></i>
+                    <div id="full_name"></div>
+                </div>
+            </a>
         </nav>
     </footer>
     <script type="module" src="../js/cacheHandling.js"></script>

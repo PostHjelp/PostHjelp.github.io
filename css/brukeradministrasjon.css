@@ -1,11 +1,13 @@
 #add-worker-form {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
 }
 
 #worker-input {
     width: 100%;
+    display: grid;
+    box-sizing: border-box;
     padding-top: 1rem; /* Gjør feltene større og lettere å klikke på */
     padding-bottom: 1rem; /* Gjør feltene større og lettere å klikke på */
     border: none; /* Subtil ramme */

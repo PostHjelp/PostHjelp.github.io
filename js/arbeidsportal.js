@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const workContainer = document.getElementById('work-container');
     const myWorkContainer = document.getElementById('my-work-container');
+    const workSortPlace = document.getElementById('work-sort-place');
     const workSort = document.getElementById('work-sort');
     const workSortPiP = document.getElementById('work-sort-pip');
     const workCollection = collection(db, "work");
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         onSnapshot(q, (querySnapshot) => {
             workItems = [];
             myWorkItems = [];
+            const uniquePlaces = new Set();
             const uniqueDates = new Set();
             const uniquePiPs = new Set();
 
@@ -69,6 +71,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     myWorkItems.push({ id: workId, data, date });
                 } else {
                     workItems.push({ id: workId, data, date });
+                    if (data.place) {
+                        uniquePlaces.add(data.place);
+                    }
                     uniqueDates.add(date.getTime());
                     uniquePiPs.add(data.pip);
                 }
@@ -83,8 +88,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 addWorkItemToDOM(data, id, dateString, workContainer, myWorkContainer, true);
             });
 
+            const sortedPlaces = Array.from(uniquePlaces).sort((a, b) => a - b);
             const sortedDates = Array.from(uniqueDates).sort((a, b) => a - b);
             const sortedPiPs = Array.from(uniquePiPs).sort((a, b) => a - b);
+
+            let workSortPlaceHTML = `<option value="all">Alle steder</option>`;
+            sortedPlaces.forEach(place => {
+                workSortPlaceHTML += `<option value="${place}">${place}</option>`;
+            });
+            workSortPlace.innerHTML = workSortPlaceHTML;
 
             let workSortHTML = `<option value="all">Alle datoer</option>`;
             sortedDates.forEach(dateTime => {
@@ -100,17 +112,27 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
             workSortPiP.innerHTML = workSortPiPHTML;
 
-            filterWorkItems('all', 'all', workItems, workContainer, myWorkContainer);
+            filterWorkItems('all', 'all', 'all', workItems, workContainer, myWorkContainer);
             bemannBtn();
             hideSpinner();
             main.style.display = "grid";
+        });
+
+        // Event listener for sortering etter sted
+        workSortPlace.addEventListener('change', (event) => {
+            const selectedDate = workSort.value;
+            const selectedPiP = workSortPiP.value;
+            const selectedPlace = event.target.value;
+            filterWorkItems(selectedDate, selectedPiP, selectedPlace, workItems, workContainer, myWorkContainer);
+            bemannBtn();
         });
 
         // Event listener for sortering etter dato
         workSort.addEventListener('change', (event) => {
             const selectedDate = event.target.value;
             const selectedPiP = workSortPiP.value;
-            filterWorkItems(selectedDate, selectedPiP, workItems, workContainer, myWorkContainer);
+            const selectedPlace = workSortPlace.value;
+            filterWorkItems(selectedDate, selectedPiP, selectedPlace, workItems, workContainer, myWorkContainer);
             bemannBtn();
         });
 
@@ -118,7 +140,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         workSortPiP.addEventListener('change', (event) => {
             const selectedDate = workSort.value;
             const selectedPiP = event.target.value;
-            filterWorkItems(selectedDate, selectedPiP, workItems, workContainer, myWorkContainer);
+            const selectedPlace = workSortPlace.value;
+            filterWorkItems(selectedDate, selectedPiP, selectedPlace, workItems, workContainer, myWorkContainer);
             bemannBtn();
         });
 
@@ -214,7 +237,7 @@ function addWorkItemToDOM(data, workId, dateString, workContainer, myWorkContain
             button.textContent = "Venter på behandling";
             button.disabled = true;
         } else {
-            button.textContent = "Bemann";
+            button.textContent = "Ta vakt";
         }
 
         div.appendChild(button);
@@ -227,20 +250,22 @@ function createWorkSection(data, dateString, headerClass, isMyWork, user = '') {
     section.className = "work-element";
     section.innerHTML = `
         <div class="work-header ${headerClass}">PiP ${data.pip}</div>
+        ${data.place ? `<div class="work-underheader work-underheader-place">${data.place}</div>` : ''}
         <div class="work-underheader">${data.postal_code}</div>
-        ${data.baskets ? `<div class="work-baskets">${data.baskets} kasser</div>` : ''}
+        ${data.baskets ? `<div class="work-underheader">${data.baskets} kasser</div>` : ''}
         <div class="work-underheader" ${isMyWork ? `style="margin-bottom: 1rem;` : ''}">${dateString}${data.time ? `, ${data.time}` : ''}</div>
         ${!data.available && !isMyWork ? `<div class="work-unavailable-txt">Bemannet av <br> ${user}</div><div class="overlay"></div>` : ''}
     `;
     return section;
 }
 
-function filterWorkItems(selectedDate, selectedPiP, workItems, workContainer, myWorkContainer) {
+function filterWorkItems(selectedDate, selectedPiP, selectedPlace, workItems, workContainer, myWorkContainer) {
     workContainer.innerHTML = '';
     const filteredItems = workItems.filter(item => {
+        const matchesPlace = selectedPlace === 'all' || item.data.place === selectedPlace; // Nytt filter
         const matchesDate = selectedDate === 'all' || item.date.getTime() == selectedDate;
         const matchesPiP = selectedPiP === 'all' || item.data.pip == selectedPiP;
-        return matchesDate && matchesPiP;
+        return matchesDate && matchesPiP && matchesPlace;
     });
     filteredItems.forEach(item => {
         const { id, data, date } = item;

@@ -51,7 +51,7 @@ main section {
     display: grid;
 }
 
-#full_name {
+#full_name_title {
     font-size: 2.25rem;
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@ main section {
     font-weight: bold;
 }
 
-#availability {
+#availability_title {
     font-size: 1.75rem;
     display: flex;
     align-items: center;

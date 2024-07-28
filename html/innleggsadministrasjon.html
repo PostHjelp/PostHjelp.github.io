@@ -7,6 +7,7 @@
     <script src="../js/authentication/authAdmin.js" type="module" defer></script>
     <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="../../media/idfMm1ADA9_1717842206506.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/spinner.css">
     <link rel="stylesheet" href="../../css/innleggsadministrasjon.css">
@@ -32,9 +33,12 @@
     </main>
     <footer>
         <nav>
-            <div id="full_name"></div>
-            <a href="min_side.html">Min Side</a>
-            <div id="availability"></div>
+            <a href="/html/min_side.html" id="my-profile">
+                <div id="my-profile-container">
+                    <i class="fas fa-user" id="my-profile-logo"></i>
+                    <div id="full_name"></div>
+                </div>
+            </a>
         </nav>
     </footer>
     <script type="module" src="../js/cacheHandling.js"></script>
