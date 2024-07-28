@@ -25,7 +25,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #my-work-btn {
     border-radius: .5rem;
     display: grid;
-    background-color: #e3e3e3;
+    background-color: #ededed;
     text-align: center;
     text-decoration: none;
     color: black;
