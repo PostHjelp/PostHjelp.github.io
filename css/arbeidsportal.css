@@ -84,6 +84,8 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 
 #add-work-form input[type="date"] {
     border: none;
+    height: 2rem;
+    color: black;
     margin-left: auto;
     margin-right: auto;
 }
@@ -91,12 +93,12 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #dropdown-box-place {
     font-size: 1.2rem;
     background-color: rgb(244, 244, 244);
-    border: .3rem #ededed;
+    border: .3rem rgb(244, 244, 244);
     box-sizing: border-box;
     border-radius: .5rem;
     width: 100%;
-    color: grey;
-    padding-left: 1rem;
+    color: black;
+    padding-left: .5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
