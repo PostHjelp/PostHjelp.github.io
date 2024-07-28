@@ -99,8 +99,8 @@ footer nav {
 }
 
 #my-profile-container {
-    display: none;
-    height: 80%;
+    display: grid;
+    height: 4rem;
     margin: auto;
 }
 

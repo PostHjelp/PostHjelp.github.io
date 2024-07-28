@@ -34,8 +34,8 @@ export function updateUI(fullName, availability, role) {
     const myProfileContainer = document.getElementById("my-profile-container");
 
     myProfile.style.color = getColorForAvailability(availability);
-    fullNameElement.textContent = fullName;
-    myProfileContainer.style.display = "grid";
+    fullNameElement.textContent = "fullName";
+    //myProfileContainer.style.display = "grid";
 
     // Vis admin-knappen hvis brukeren er admin
     if (role === 'admin') {
