@@ -28,9 +28,9 @@ async function requestPermission() {
           if (existingToken !== newToken) {
             // Oppdaterer brukerdokumentet med det nye tokenet
             await updateDoc(userDocRef, { token: newToken });
-            alert('Varslinger nå aktivert');
+            alert('Varslinger nå aktivert for denne enheten.');
           } else {
-            alert('Varslinger er allerede aktivert');
+            alert('Varslinger er allerede aktivert for denne enheten.');
           }
         } else {
           // Hvis brukerdokumentet ikke eksisterer, håndter det her
