@@ -8,7 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+let previousState = {}
+
 export function updateUI(fullName, availability, role) {
+    if (previousState.fullName === fullName &&
+        previousState.availability === availability &&
+        previousState.role === role) {
+        return; // Unngå unødvendig oppdatering hvis ingenting har endret seg
+    }
+
+    previousState = { fullName, availability, role };
+
     // Sjekk om vi er på 'min-side.html'
     if (window.location.pathname.includes('min_side.html')) {
         const fullNameElementTitle = document.getElementById("full_name_title");
