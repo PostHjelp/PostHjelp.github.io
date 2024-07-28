@@ -126,8 +126,16 @@ function bemannBtn() {
 
             let time = prompt("Vennligst oppgi et tidspunkt du kan komme inn:", "08:00");
             if (time) {
-                await updateWorkForReview(userId, userName, workId, workDate, time);
-                window.location.href = "arbeidsportal.html";
+                // Valider formatet "HH:MM" med regex
+                const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
+                if (timePattern.test(time)) {
+                    // Formatet er riktig, bruk inputen
+                    await updateWorkForReview(userId, userName, workId, workDate, time);
+                    window.location.href = "arbeidsportal.html";
+                } else {
+                    // Feil format, vis feilmelding
+                    alert("Tidspunktet må være i formatet HH:MM, for eksempel 08:00 eller 15:00.");
+                }
             } else {
                 alert("Tidspunkt ble ikke oppgitt, registreringen avbrutt.");
             }
@@ -187,7 +195,7 @@ function createWorkSection(data, dateString, headerClass, isMyWork, user = '') {
         <div class="work-header ${headerClass}">PiP ${data.pip}</div>
         <div class="work-underheader">${data.postal_code}</div>
         ${data.baskets ? `<div class="work-baskets">${data.baskets} kasser</div>` : ''}
-        <div class="work-underheader" ${isMyWork ? `style="margin-bottom: 1rem;` : ''}">${dateString}${data.time ? ` - ${data.time}` : ''}</div>
+        <div class="work-underheader" ${isMyWork ? `style="margin-bottom: 1rem;` : ''}">${dateString}${data.time ? `, ${data.time}` : ''}</div>
         ${!data.available && !isMyWork ? `<div class="work-unavailable-txt">Bemannet av <br> ${user}</div><div class="overlay"></div>` : ''}
     `;
     return section;

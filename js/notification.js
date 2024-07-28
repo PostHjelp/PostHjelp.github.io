@@ -1,4 +1,4 @@
-import { db, messaging, getToken, onMessage, doc, setDoc, getDoc } from './firebaseConfig.js';
+import { db, messaging, getToken, onMessage, doc, updateDoc, getDoc } from './firebaseConfig.js';
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/firebase-messaging-sw.js')
@@ -14,14 +14,27 @@ async function requestPermission() {
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
       console.log('Notification permission granted.');
-      const currentToken = await getToken(messaging, { vapidKey: "BDxzmnzs0ebOgS3_dZeMkb4zWaSpOzgMHgrfJ8nJj3ucIpcDW5oTJZ3gBfY1oFb_QO-W4q40K05QnzrZpbQtHN0" });
-      if (currentToken) {
-        console.log('FCM Token:', currentToken);
-        // Check if token is already in Firestore
-        const tokenDoc = await getDoc(doc(db, 'userTokens', currentToken));
-        if (!tokenDoc.exists()) {
-          // Save the new token to Firestore
-          await setDoc(doc(db, 'userTokens', currentToken), { token: currentToken });
+      const newToken = await getToken(messaging, { vapidKey: "BDxzmnzs0ebOgS3_dZeMkb4zWaSpOzgMHgrfJ8nJj3ucIpcDW5oTJZ3gBfY1oFb_QO-W4q40K05QnzrZpbQtHN0" });
+      if (newToken) {
+        console.log('FCM Token:', newToken);
+
+        const userId = localStorage.getItem('user');
+        const userDocRef = doc(db, 'users', userId);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const existingToken = userData.token;
+
+          if (existingToken !== newToken) {
+            // Oppdaterer brukerdokumentet med det nye tokenet
+            await updateDoc(userDocRef, { token: newToken });
+            console.log('Token updated in Firestore.');
+          } else {
+            console.log('Token is already up-to-date.');
+          }
+        } else {
+          // Hvis brukerdokumentet ikke eksisterer, håndter det her
+          console.log('User document does not exist.');
         }
       } else {
         console.log('No registration token available. Request permission to generate one.');

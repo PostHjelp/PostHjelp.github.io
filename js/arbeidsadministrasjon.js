@@ -66,8 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
 
             // Hent tokens fra databasen din
-            const tokensSnapshot = await getDocs(collection(db, 'userTokens'));
-            const tokens = tokensSnapshot.docs.map(doc => doc.data().token);
+            const tokens = fetchUserTokens();
 
             // Send varsel
             await sendNotification('Nytt arbeid!', `PiP ${pip} | ${postnummer} | ${workDate}`, tokens);
@@ -77,3 +76,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Funksjon for å hente tokens fra bruker-dokumenter
+async function fetchUserTokens() {
+  try {
+    // Hent alle brukerdokumentene fra 'users'-samlingen
+    const usersSnapshot = await getDocs(collection(db, 'users'));
+    
+    // Map over dokumentene og hent ut 'currentToken' for hver bruker
+    const tokens = usersSnapshot.docs
+      .map(doc => doc.data().token)
+      .filter(token => token); // Filtrer ut eventuelle undefined eller null tokens
+    
+    console.log('Fetched tokens:', tokens);
+    return tokens;
+  } catch (error) {
+    console.error('Error fetching tokens:', error);
+  }
+}
