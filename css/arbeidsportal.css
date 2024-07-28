@@ -218,3 +218,15 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #work-sort:focus, #work-sort:focus {
     outline: none;
 }
+
+.pending-work {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-size: 1.75rem;
+    border: none;
+    border-radius: 0;
+    color: #f7f7f7;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    background-color: orange;
+}

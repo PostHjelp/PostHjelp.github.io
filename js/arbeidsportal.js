@@ -212,12 +212,25 @@ function addWorkItemToDOM(data, workId, dateString, workContainer, myWorkContain
         workContainer.appendChild(div);
     } else {
         const div = createWorkSection(data, dateString, 'work-header not-my-work-header', false, data.user);
+
+        // Sjekk om brukeren allerede er på kandidatlisten
+        const userId = localStorage.getItem('user');
+        const isCandidate = data.candidates && data.candidates.some(candidate => candidate.userId === userId);
+
         const button = document.createElement('button');
         button.className = "work-btn";
         button.dataset.workId = workId;
         button.dataset.workDate = data.date;
         button.dataset.workPip = data.pip;
-        button.textContent = "Bemann";
+
+        if (isCandidate) {
+            button.className = "pending-work"
+            button.textContent = "Venter på behandling";
+            button.disabled = true; // Deaktiver knappen hvis brukeren allerede venter på behandling
+        } else {
+            button.textContent = "Bemann";
+        }
+
         div.appendChild(button);
         workContainer.appendChild(div);
     }
