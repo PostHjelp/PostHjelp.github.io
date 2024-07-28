@@ -89,15 +89,16 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 }
 
 #dropdown-box-place {
-    width: 100%; /* Full bredde på input-feltene */
-    padding-top: 1rem; /* Gjør feltene større og lettere å klikke på */
-    padding-bottom: 1rem; /* Gjør feltene større og lettere å klikke på */
-    border: none; /* Subtil ramme */
-    background-color: rgb(244, 244, 244);
     font-size: 1.2rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    background-color: rgb(244, 244, 244);
+    border: .3rem #ededed;
+    box-sizing: border-box;
     border-radius: .5rem;
+    width: 100%;
+    color: grey;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
