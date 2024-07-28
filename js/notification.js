@@ -28,9 +28,9 @@ async function requestPermission() {
           if (existingToken !== newToken) {
             // Oppdaterer brukerdokumentet med det nye tokenet
             await updateDoc(userDocRef, { token: newToken });
-            console.log('Token updated in Firestore.');
+            alert('Varslinger nå aktivert');
           } else {
-            console.log('Token is already up-to-date.');
+            alert('Varslinger er allerede aktivert');
           }
         } else {
           // Hvis brukerdokumentet ikke eksisterer, håndter det her
