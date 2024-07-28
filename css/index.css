@@ -99,11 +99,14 @@ footer nav {
 }
 
 #my-profile-container {
-    display: grid;
+    display: none;
     height: 4rem;
     margin: auto;
 }
 
 #my-profile-logo {
+    width: 2rem;
+    height: 2rem;
+    margin: auto;
     font-size: 2rem;
 }
