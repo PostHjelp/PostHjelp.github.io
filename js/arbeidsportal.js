@@ -251,7 +251,7 @@ function createWorkSection(data, dateString, headerClass, isMyWork, user = '') {
         <div class="work-underheader">${data.postal_code}</div>
         ${data.baskets ? `<div class="work-underheader">${data.baskets} kasser</div>` : ''}
         <div class="work-underheader" ${isMyWork ? `style="margin-bottom: 1rem;` : ''}">${dateString}${data.time ? `, ${data.time}` : ''}</div>
-        ${!data.available && !isMyWork ? `<div class="work-unavailable-txt">Bemannet av <br> ${user}</div><div class="overlay"></div>` : ''}
+        ${!data.available && !isMyWork ? `<div class="work-unavailable-txt">${user}</div><div class="overlay"></div>` : ''}
     `;
     return section;
 }

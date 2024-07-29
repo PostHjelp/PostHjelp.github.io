@@ -181,7 +181,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 }
 
 .taken-work-header {
-    background-color: #e32d22;
+    background-color: orange;
 }
 
 .not-my-work-header {
