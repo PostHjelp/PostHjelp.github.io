@@ -1,52 +1,54 @@
-import { db, getDocs, collection, where, query } from './firebaseConfig.js';
+import { db, collection, where, query, onSnapshot } from './firebaseConfig.js';
 
-async function fetchVikars() {
+function fetchVikars() {
     const vikarsRef = collection(db, "users");
     const vikarQuery = query(vikarsRef, where("role", "==", "vikar"));
-    const querySnapshot = await getDocs(vikarQuery);
 
-    const vikarsList = [];
+    // Bruk onSnapshot for å få sanntidsoppdateringer
+    onSnapshot(vikarQuery, (querySnapshot) => {
+        const vikarsList = [];
 
-    querySnapshot.forEach((doc) => {
-        const workDates = doc.data().workDates;
-        const fullName = doc.data().fullName;
-        const availability = doc.data().availability;
-        const tlfNumber = doc.data().tlf_number;
+        querySnapshot.forEach((doc) => {
+            const workDates = doc.data().workDates;
+            const fullName = doc.data().fullName;
+            const availability = doc.data().availability;
+            const tlfNumber = doc.data().tlf_number;
 
-        let isWorking = false;
-        if (Array.isArray(workDates)) {
-            workDates.forEach(workDate => {
-                const date = new Date(workDate);
-                const today = new Date();
+            let isWorking = false;
+            if (Array.isArray(workDates)) {
+                workDates.forEach(workDate => {
+                    const date = new Date(workDate);
+                    const today = new Date();
 
-                // Nullstill tid på begge datoene for å kun sammenligne året, måneden og dagen
-                date.setHours(0, 0, 0, 0);
-                today.setHours(0, 0, 0, 0);
+                    date.setHours(0, 0, 0, 0);
+                    today.setHours(0, 0, 0, 0);
 
-                if (date.getTime() === today.getTime()) {
-                    isWorking = true;
-                }
-            });
-        }
-        
-        if (isWorking) {
-            vikarsList.push({ fullName, availability: "Jobber", tlfNumber });
-        } else {
-            vikarsList.push({ fullName, availability, tlfNumber });
-        }
+                    if (date.getTime() === today.getTime()) {
+                        isWorking = true;
+                    }
+                });
+            }
+            
+            if (isWorking) {
+                vikarsList.push({ fullName, availability: "Jobber", tlfNumber });
+            } else {
+                vikarsList.push({ fullName, availability, tlfNumber });
+            }
+        });
+
+        const order = {
+            'Tilgjengelig': 1,
+            'Delvis tilgjengelig': 2,
+            'Jobber': 3,
+            'Ikke tilgjengelig': 4
+        };
+
+        const sortedUsers = vikarsList.sort((a, b) => order[a.availability] - order[b.availability]);
+
+        updateVikarListHTML(sortedUsers);
+    }, (error) => {
+        console.error("Error fetching data: ", error);
     });
-
-    // Sorter brukerdata basert på availability-status
-    const order = {
-        'Tilgjengelig': 1,
-        'Delvis tilgjengelig': 2,
-        'Jobber': 3,
-        'Ikke tilgjengelig': 4
-    };
-
-    const sortedUsers = vikarsList.sort((a, b) => order[a.availability] - order[b.availability]);
-
-    updateVikarListHTML(sortedUsers);
 }
   
 function updateVikarListHTML(vikars) {
@@ -54,7 +56,7 @@ function updateVikarListHTML(vikars) {
     let htmlContent = '';
 
     for(let i = 0; i < vikars.length; i++) {
-        let color = "green"; // Setter defaultfarge til grønn (tilgjengelig)
+        let color = "green";
 
         if (vikars[i].availability === "Delvis tilgjengelig" || vikars[i].availability === "Jobber") {
             color = "orange";
