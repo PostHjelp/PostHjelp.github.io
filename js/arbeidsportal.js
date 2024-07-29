@@ -1,5 +1,5 @@
-import { db, doc, updateDoc, arrayUnion, collection, getDocs, query, orderBy, onSnapshot } from './firebaseConfig.js';
-import { updateAvailabilityAndWorkDate, updateWorkForReview } from './arbeidsportalAddWork.js';
+import { db, doc, updateDoc, arrayUnion, collection, getDocs, deleteDoc, query, orderBy, onSnapshot } from './firebaseConfig.js';
+import { updateWorkForReview } from './arbeidsportalAddWork.js';
 import { fetchAdminTokens } from './tokenHandling.js';
 
 // Funksjon for å sende varsling
@@ -47,11 +47,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         onSnapshot(q, (querySnapshot) => {
             workItems = [];
             myWorkItems = [];
+
+            // Tøm containerne for å unngå duplikater
+            workContainer.innerHTML = '';
+            myWorkContainer.innerHTML = '';
+
             const uniquePlaces = new Set();
             const uniqueDates = new Set();
             const uniquePiPs = new Set();
 
-            querySnapshot.forEach(doc => {
+            querySnapshot.forEach(async doc => {
                 const data = doc.data();
                 const workId = doc.id;
 
@@ -62,6 +67,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 today.setHours(0, 0, 0, 0);
 
                 if (date.getTime() < today.getTime()) {
+                    // Slett dokumentet fra databasen hvis det er utdatert
+                    await deleteDoc(doc.ref);
                     return;
                 }
 

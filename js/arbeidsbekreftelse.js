@@ -36,6 +36,7 @@ async function fetchAndDisplayCandidates() {
         console.error("Error fetching data: ", error);
     }
 
+    // Rens containeren før nytt innhold legges til
     candidateContainer.innerHTML = '';
 
     // Iterer over grupperte kandidater for å generere HTML-struktur
@@ -46,28 +47,32 @@ async function fetchAndDisplayCandidates() {
             const dateString = getDateString(date);
 
             const workElement = document.createElement('div');
-            workElement.classList.add('work');
+            workElement.classList.add('work-element');
             workElement.innerHTML = `
-                <h3>PiP ${workData.pip}</h3>
-                <p>${workData.postcode}</p>
-                <p>${dateString}</p>
+                <div class="work-header not-my-work-header">PiP ${workData.pip}</div>
+                <div class="work-underheader">${workData.postcode}</div>
+                <div class="work-underheader">${dateString}</div>
             `;
 
+            const candidateElement = document.createElement('div');
+            candidateElement.classList.add('candidate-container');
+
             workData.candidates.forEach(candidate => {
-                const candidateElement = document.createElement('div');
-                candidateElement.classList.add('candidate');
-                candidateElement.innerHTML = `
-                    <p>Navn: ${candidate.userName}</p>
-                    <p>Klokkeslett: ${candidate.time}</p>
-                    <button class="select-button">Velg</button>
+                const candidateDiv = document.createElement('div');
+                candidateDiv.classList.add('candidate');
+                candidateDiv.innerHTML = `
+                    <div class="work-candidate-header">${candidate.userName}</div>
+                    <div class="work-candidate-time">${candidate.time}</div>
+                    <div class="select-button">Tildel</div>
                 `;
 
-                const selectButton = candidateElement.querySelector('.select-button');
+                const selectButton = candidateDiv.querySelector('.select-button');
                 selectButton.addEventListener('click', () => selectCandidate(candidate.workId, candidate.userId, candidate.userName, candidate.workDate, candidate.time));
 
-                workElement.appendChild(candidateElement);
+                candidateElement.appendChild(candidateDiv);
             });
 
+            workElement.appendChild(candidateElement);
             candidateContainer.appendChild(workElement);
         }
     }

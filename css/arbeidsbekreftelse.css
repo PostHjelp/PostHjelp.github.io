@@ -3,8 +3,32 @@
     grid-gap: 1rem;
 }
 
+.candidate-container {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    display: grid;
+    grid-gap: .5rem;
+}
+
 .candidate {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: white;
+    grid-template-columns: 3fr 1fr 1fr;
+    background-color: rgb(247, 247, 247);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 0;
+    color: black;
+    border-radius: .5rem;
+}
+
+.work-candidate-header {
+    text-align: left;
+    padding-left: .7rem;
+    font-weight: bold;
+}
+
+.select-button {
+    color: green;
 }
