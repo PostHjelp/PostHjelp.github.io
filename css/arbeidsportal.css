@@ -84,8 +84,10 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 
 #add-work-form input[type="date"] {
     border: none;
-    height: 2rem;
-    width: 14.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 3.5rem;
+    width: 15rem;
     color: black;
     margin-left: auto;
     margin-right: auto;
@@ -100,8 +102,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     width: 100%;
     color: black;
     padding-left: .5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    height: 3.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
