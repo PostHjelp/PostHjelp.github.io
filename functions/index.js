@@ -49,3 +49,25 @@ exports.deleteUser = functions.https.onRequest((req, res) => {
     }
   });
 });
+
+exports.deleteOldWorkItems = functions.pubsub.schedule("0 0 * * *")
+    .timeZone("Europe/Oslo")
+    .onRun(async (context) => {
+      const db = admin.firestore();
+      const workCollection = db.collection("work");
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Sett dagens tid til midnatt
+
+      const querySnapshot = await workCollection
+          .where("date", "<", today).get();
+
+      const batch = db.batch();
+
+      querySnapshot.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+
+      await batch.commit();
+      console.log("Slettet gamle dokumenter fra work-samlingen.");
+      return null;
+    });

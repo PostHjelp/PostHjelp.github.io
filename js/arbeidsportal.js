@@ -61,16 +61,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const workId = doc.id;
 
                 const date = new Date(data.date);
-                const today = new Date();
-
-                date.setHours(0, 0, 0, 0);
-                today.setHours(0, 0, 0, 0);
-
-                if (date.getTime() < today.getTime()) {
-                    // Slett dokumentet fra databasen hvis det er utdatert
-                    await deleteDoc(doc.ref);
-                    return;
-                }
 
                 let dateString = getDateString(date);
 
