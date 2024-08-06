@@ -171,7 +171,6 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #my-work-container {
     display: none;
     grid-gap: 1.35rem;
-    padding-bottom: 1rem;
 }
 
 .work-element {
