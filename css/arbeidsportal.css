@@ -227,7 +227,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     background-color: #e1e1e1;
     padding-top: .5rem;
     padding-bottom: .5rem;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     border: none;
     border-radius: 0;
     color: black;
@@ -276,7 +276,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 .pending-work {
     padding-top: .5rem;
     padding-bottom: .5rem;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     border: none;
     border-radius: 0;
     color: #f7f7f7;
