@@ -14,9 +14,12 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html">Innleggstavle</a>
-            <a href="arbeidsportal.html">Arbeidsportal</a>
-            <a href="vikarportal.html">Vikarportal</a>
+            <div id="logo">PostHjelp</div>
+            <a href="/html/min_side.html" id="my-profile">
+                <div id="my-profile-container">
+                    <i class="fas fa-user" id="my-profile-logo"></i>
+                </div>
+            </a>
         </nav>
     </header>
     <main class="min_side_main">
@@ -25,6 +28,7 @@
                 <div id="full_name_title"></div>
                 <div id="availability_title"></div>
             </div>
+            <button id="notify-button">Slå på varslinger</button>
             <div class="status">
                 <label for="availability-status">Tilgjengelighetsstatus: </label>
                 <select id="availability-status">
@@ -44,12 +48,9 @@
     </main>
     <footer>
         <nav>
-            <a href="/html/min_side.html" id="my-profile">
-                <div id="my-profile-container">
-                    <i class="fas fa-user" id="my-profile-logo"></i>
-                    <div id="full_name"></div>
-                </div>
-            </a>
+            <a href="../index.html">Innleggstavle</a>
+            <a href="arbeidsportal.html">Arbeidsportal</a>
+            <a href="vikarportal.html">Vikarportal</a>
         </nav>
     </footer>
     <script type="module">
@@ -61,6 +62,7 @@
         });
     </script>
     <script type="module" src="../js/authentication/userHandling.js"></script>
+    <script type="module" src="../js/notification.js"></script>
     <script type="module" src="../js/getUserInfo.js"></script>
     <script type="module" src="../js/cacheHandling.js"></script>
     <script type="module" src="../js/changeAvailability.js"></script>

@@ -15,9 +15,12 @@
 <body>
     <header>
         <nav>
-            <a href="index.html" style="background-color: white; color: #e32d22;">Innleggstavle</a>
-            <a href="/html/arbeidsportal.html">Arbeidsportal</a>
-            <a href="/html/vikarportal.html">Vikarportal</a>
+            <div id="logo">PostHjelp</div>
+            <a href="/html/min_side.html" id="my-profile">
+                <div id="my-profile-container">
+                    <i class="fas fa-user" id="my-profile-logo"></i>
+                </div>
+            </a>
         </nav>
     </header>
     <main>
@@ -26,21 +29,16 @@
         </div>
         <section id="posts-main">
             <a href="/html/innleggsadministrasjon.html" id="add-post-btn" class="admin-only">Legg ut innlegg</a>
-            <button id="notify-button">Slå på varslinger</button>
             <div id="posts-container"></div>
         </section>
     </main>
     <footer>
         <nav>
-            <a href="/html/min_side.html" id="my-profile">
-                <div id="my-profile-container">
-                    <i class="fas fa-user" id="my-profile-logo"></i>
-                    <div id="full_name"></div>
-                </div>
-            </a>
+            <a href="index.html" class="selected-page">Innleggstavle</a>
+            <a href="/html/arbeidsportal.html">Arbeidsportal</a>
+            <a href="/html/vikarportal.html">Vikarportal</a>
         </nav>
     </footer>
-    <script type="module" src="/js/notification.js"></script>
     <script type="module" src="/js/getUserInfo.js"></script>
     <script type="module" src="/js/cacheHandling.js"></script>
     <script type="module" src="/js/innlegg.js"></script>

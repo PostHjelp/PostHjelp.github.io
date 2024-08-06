@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const cors = require("cors")({origin: true});
+const {DateTime} = require("luxon");
 
 admin.initializeApp();
 
@@ -55,19 +56,30 @@ exports.deleteOldWorkItems = functions.pubsub.schedule("0 0 * * *")
     .onRun(async (context) => {
       const db = admin.firestore();
       const workCollection = db.collection("work");
-      const today = new Date();
-      today.setHours(0, 0, 0, 0); // Sett dagens tid til midnatt
+      // Set 'today' to the start of the current day in Oslo time
+      const today = DateTime.now().setZone("Europe/Oslo")
+          .startOf("day")
+          .toISODate();
 
-      const querySnapshot = await workCollection
-          .where("date", "<", today).get();
+      try {
+        // Konverter 'date' feltet fra streng til Date-objekt i
+        // Firestore-forespørselen
+        const querySnapshot = await workCollection
+            .where("date", "<", today)
+            .get();
 
-      const batch = db.batch();
+        console.log(`Fant ${querySnapshot.size} dokumenter for sletting.`);
 
-      querySnapshot.forEach((doc) => {
-        batch.delete(doc.ref);
-      });
+        const batch = db.batch();
+        querySnapshot.forEach((doc) => {
+          batch.delete(doc.ref);
+        });
 
-      await batch.commit();
-      console.log("Slettet gamle dokumenter fra work-samlingen.");
+        await batch.commit();
+        console.log("Slettet gamle dokumenter fra work-samlingen.");
+      } catch (error) {
+        console.error("Feil under sletting av gamle dokumenter: ", error);
+      }
+
       return null;
     });

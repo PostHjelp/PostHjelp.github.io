@@ -29,12 +29,10 @@ export function updateUI(fullName, availability, role) {
         availabilityElement.style.color = getColorForAvailability(availabilityElement.textContent);
     }
 
-    const fullNameElement = document.getElementById("full_name");
     const myProfile = document.getElementById("my-profile-logo");
     const myProfileContainer = document.getElementById("my-profile-container");
 
     myProfile.style.color = getColorForAvailability(availability);
-    fullNameElement.textContent = fullName;
     myProfileContainer.style.display = "grid";
 
     // Vis admin-knappen hvis brukeren er admin

@@ -15,9 +15,12 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html">Innleggstavle</a>
-            <a href="arbeidsportal.html">Arbeidsportal</a>
-            <a href="vikarportal.html">Vikarportal</a>
+            <div id="logo">PostHjelp</div>
+            <a href="/html/min_side.html" id="my-profile">
+                <div id="my-profile-container">
+                    <i class="fas fa-user" id="my-profile-logo"></i>
+                </div>
+            </a>
         </nav>
     </header>
     <main class="brukeradministrasjon-main">
@@ -41,14 +44,13 @@
     </main>
     <footer>
         <nav>
-            <a href="/html/min_side.html" id="my-profile">
-                <div id="my-profile-container">
-                    <i class="fas fa-user" id="my-profile-logo"></i>
-                    <div id="full_name"></div>
-                </div>
-            </a>
+            <a href="../index.html">Innleggstavle</a>
+            <a href="arbeidsportal.html">Arbeidsportal</a>
+            <a href="vikarportal.html">Vikarportal</a>
         </nav>
     </footer>
+    <script type="module" src="../js/getUserInfo.js"></script>
+    <script type="module" src="../js/cacheHandling.js"></script>
     <script type="module" src="../js/brukeradministrasjon.js"></script>
 </body>
 </html>

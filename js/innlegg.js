@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 div.innerHTML = `
                     <div class="post-user">${data.username}</div>
                     <div class="post-content">${data.content}</div>
-                    <div class="post-date" style="margin-bottom: 1rem;">${dateStr}, ${timeStr}</div>
+                    <div class="post-date">${dateStr}, ${timeStr}</div>
                 `;
 
                 postsContainer.appendChild(div);
