@@ -1,14 +1,15 @@
-import { db, collection, where, query, onSnapshot } from './firebaseConfig.js';
+import { db, collection, query, onSnapshot } from './firebaseConfig.js';
 
-function fetchVikars() {
-    const vikarsRef = collection(db, "users");
-    const vikarQuery = query(vikarsRef, where("role", "==", "vikar"));
+function fetchUsers() {
+    const usersRef = collection(db, "users");
 
     // Bruk onSnapshot for å få sanntidsoppdateringer
-    onSnapshot(vikarQuery, (querySnapshot) => {
+    onSnapshot(usersRef, (querySnapshot) => {
+        const adminsList = [];
         const vikarsList = [];
 
         querySnapshot.forEach((doc) => {
+            const role = doc.data().role;
             const workDates = doc.data().workDates;
             const fullName = doc.data().fullName;
             const availability = doc.data().availability;
@@ -28,11 +29,13 @@ function fetchVikars() {
                     }
                 });
             }
-            
-            if (isWorking) {
-                vikarsList.push({ fullName, availability: "Jobber", tlfNumber });
-            } else {
-                vikarsList.push({ fullName, availability, tlfNumber });
+
+            const user = { fullName, availability: isWorking ? "Jobber" : availability, tlfNumber };
+
+            if (role === "admin") {
+                adminsList.push(user);
+            } else if (role === "vikar") {
+                vikarsList.push(user);
             }
         });
 
@@ -43,26 +46,37 @@ function fetchVikars() {
             'Ikke tilgjengelig': 4
         };
 
-        const sortedUsers = vikarsList.sort((a, b) => order[a.availability] - order[b.availability]);
+        const sortedAdmins = adminsList.sort((a, b) => order[a.availability] - order[b.availability]);
+        const sortedVikars = vikarsList.sort((a, b) => order[a.availability] - order[b.availability]);
 
-        updateVikarListHTML(sortedUsers);
+        updateVikarListHTML(sortedAdmins, sortedVikars);
     }, (error) => {
         console.error("Error fetching data: ", error);
     });
 }
-  
-function updateVikarListHTML(vikars) {
+
+function updateVikarListHTML(admins, vikars) {
     const section = document.getElementById('vikarliste');
     let htmlContent = '';
 
-    for(let i = 0; i < vikars.length; i++) {
-        let color = "green";
+    // Legg til adminer først
+    for (let i = 0; i < admins.length; i++) {
+        let color = getColorForAvailability(admins[i].availability);
 
-        if (vikars[i].availability === "Delvis tilgjengelig" || vikars[i].availability === "Jobber") {
-            color = "orange";
-        } else if (vikars[i].availability === "Ikke tilgjengelig") {
-            color = "red";
-        }
+        htmlContent += `
+            <a href="sms:+47${admins[i].tlfNumber}" class="vikarliste_element_admin">
+                <div class="vikarliste_element_navn_tlf_container">
+                    <div class="vikarliste_element_navn">${admins[i].fullName}</div>
+                    <div class="vikarliste_element_tlf">+47 ${admins[i].tlfNumber}</div>
+                </div>
+                <div class="vikarliste_element_status" style="color: ${color}">${admins[i].availability}</div>
+            </a>
+        `;
+    }
+
+    // Legg til vikarer etter adminer
+    for (let i = 0; i < vikars.length; i++) {
+        let color = getColorForAvailability(vikars[i].availability);
 
         htmlContent += `
             <a href="sms:+47${vikars[i].tlfNumber}" class="vikarliste_element">
@@ -74,13 +88,28 @@ function updateVikarListHTML(vikars) {
             </a>
         `;
     }
+
     hideSpinner();
     section.innerHTML = htmlContent;
     section.style.display = "grid";
+}
+
+function getColorForAvailability(availability) {
+    switch (availability) {
+        case "Tilgjengelig":
+            return "green";
+        case "Delvis tilgjengelig":
+        case "Jobber":
+            return "orange";
+        case "Ikke tilgjengelig":
+            return "red";
+        default:
+            return "black";
+    }
 }
 
 function hideSpinner() {
     document.querySelector('.spinner-container').style.display = 'none';
 }
 
-fetchVikars();
+fetchUsers();
