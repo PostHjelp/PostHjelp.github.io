@@ -269,7 +269,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#work-sort:focus, #work-sort:focus {
+#work-sort:focus, #work-sort-pip:focus, #work-sort-pip:focus {
     outline: none;
 }
 
