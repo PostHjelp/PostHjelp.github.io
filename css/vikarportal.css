@@ -9,18 +9,14 @@
     border-radius: .5rem;
 }
 
-.vikarliste_element_admin {
-    display: grid;
-    grid-template-columns: 60% 40%;
-    background-color: #ededed;
-    height: 4rem;
-    text-decoration: none;
-    color: black;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
-    border-radius: .5rem;
+.vikarliste_element_navn {
+    font-family: 'Noto Sans Display', sans-serif;
+    text-align: left;
+    font-size: 1.1rem;
+    margin-top: auto;
 }
 
-.vikarliste_element_navn {
+.vikarliste_element_admin_navn {
     font-family: 'Noto Sans Display', sans-serif;
     font-weight: bold;
     text-align: left;

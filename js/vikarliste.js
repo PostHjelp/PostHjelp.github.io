@@ -64,9 +64,9 @@ function updateVikarListHTML(admins, vikars) {
         let color = getColorForAvailability(admins[i].availability);
 
         htmlContent += `
-            <a href="sms:+47${admins[i].tlfNumber}" class="vikarliste_element_admin">
+            <a href="sms:+47${admins[i].tlfNumber}" class="vikarliste_element">
                 <div class="vikarliste_element_navn_tlf_container">
-                    <div class="vikarliste_element_navn">${admins[i].fullName}</div>
+                    <div class="vikarliste_element_admin_navn">${admins[i].fullName}</div>
                     <div class="vikarliste_element_tlf">+47 ${admins[i].tlfNumber}</div>
                 </div>
                 <div class="vikarliste_element_status" style="color: ${color}">${admins[i].availability}</div>
