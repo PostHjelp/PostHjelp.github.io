@@ -29,7 +29,7 @@ header nav {
     grid-template-columns: 4fr 1fr;
 }
 
-footer nav a, footer nav div {
+.nav-item {
     text-decoration: none;
     text-align: center;
     display: flex;
@@ -37,24 +37,15 @@ footer nav a, footer nav div {
     align-items: center;
     width: 100%;
     height: 100%;
-    font-size: 1em;  /* Adjust this value as needed */
     overflow: hidden;  /* Prevents the text from spilling out */
     white-space: nowrap;  /* Keeps the text in a single line */
     text-overflow: ellipsis;  /* Adds ellipsis if the text overflows */
+    color: rgb(110, 110, 110);
+    font-size: .8rem;
 }
 
 footer nav a {
     color: white;
-}
-
-footer nav div{
-    color: black;
-    font-size: .9rem;
-}
-
-footer nav a {
-    color: rgb(110, 110, 110);
-    font-size: .8rem;
 }
 
 main {
