@@ -1,16 +1,22 @@
 #add-post-btn {
+    position: fixed;
+    bottom: 11.5%;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: .5rem;
     display: none;
     background-color: #e32d22;
     text-align: center;
     text-decoration: none;
     color: white;
-    font-size: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    font-size: 1.1rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    width: 40%;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures the button is above other content */
 }
 
 #posts-container {

@@ -7,6 +7,23 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     grid-gap: 1rem; /* Satt til det samme som i index, kanskje endre senere? */
 }
 
+.admin-btn-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 1rem;
+    width: 100%;
+    position: fixed;
+    bottom: 11.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: .5rem;
+    font-size: 1.1rem;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures the button is above other content */
+}
+
 #add-work-btn {
     border-radius: .5rem;
     display: none;
@@ -14,9 +31,9 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     text-align: center;
     text-decoration: none;
     color: white;
-    font-size: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    font-size: 1.1rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,7 +46,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     text-align: center;
     text-decoration: none;
     color: black;
-    font-size: 2rem;
+    font-size: 1.2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     justify-content: center;
@@ -148,12 +165,12 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 
 #work-container {
     display: grid;
-    grid-gap: 2rem;
+    grid-gap: 1.35rem;
 }
 
 #my-work-container {
     display: none;
-    grid-gap: 2rem;
+    grid-gap: 1.35rem;
     padding-bottom: 1rem;
 }
 
@@ -161,7 +178,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     border-radius: .5rem;
     position: relative;
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: .7rem;
     text-align: center;
     background-color: #ededed;
     padding-bottom: 0;
@@ -174,10 +191,10 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: black;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: .85rem;
+    padding-bottom: .85rem;
 }
 
 .taken-work-header {
@@ -189,21 +206,17 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 }
 
 .work-underheader{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .work-underheader-place{
     font-weight: bold;
 }
 
-.work-baskets {
-    font-size: 1.5rem;
-}
-
 .work-btn {
     padding-top: .5rem;
     padding-bottom: .5rem;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     border: none;
     border-radius: 0;
     color: #f7f7f7;
@@ -236,8 +249,14 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     border-radius: .5rem;
 }
 
+.work-sort-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-gap: .5rem;
+}
+
 #work-sort, #work-sort-pip, #work-sort-place {
-    font-size: 1.5rem;
+    font-size: .9rem;
     border-radius: none;
     background-color: #ededed;
     border: .3rem #ededed;
@@ -249,10 +268,6 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     padding-bottom: .5rem;
     border-radius: .5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#work-sort-place {
-    grid-column: span 2;
 }
 
 #work-sort:focus, #work-sort:focus {
