@@ -125,9 +125,9 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     background-color: #e32d22; /* En tiltalende blåfarge */
     color: white; /* Hvit tekst */
     border: none; /* Fjerner standardrammen */
-    font-size: 2rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    font-size: 1rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
     border-radius: .5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -141,14 +141,14 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #confirmation-messages {
     display: grid;
     font-size: 1rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     background-color: #ddd;
     grid-gap: 1rem;
 }
 
 .confirmation-messages-element {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     padding-top: 1rem;
     padding-bottom: 1rem;
     background-color: #eaeaea;
