@@ -13,7 +13,7 @@
     height: 4rem;
     border: .4rem solid rgba(0,0,0,0.1);
     border-radius: 50%;
-    border-top-color: #eaeaea; /* Blå farge på toppen av spinneren */
+    border-top-color: rgb(245, 245, 245); /* Blå farge på toppen av spinneren */
     animation: spin .8s ease-in-out infinite;
 }
 

@@ -10,6 +10,6 @@ document.getElementById('nav-vikarportal').addEventListener('click', () => {
     window.location.href = '/html/vikarportal.html';
 });
 
-document.getElementById('my-profile').addEventListener('click', () => {
+document.getElementById('my-profile-logo').addEventListener('click', () => {
     window.location.href = '/html/min_side.html'
 });
