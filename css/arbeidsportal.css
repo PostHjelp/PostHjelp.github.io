@@ -11,14 +11,12 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     grid-gap: 1rem;
-    width: 100%;
     position: fixed;
-    bottom: 11.5%;
+    bottom: 12%;
     left: 50%;
     transform: translateX(-50%);
     border-radius: .5rem;
     font-size: 1.1rem;
-    width: 80%;
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ensures the button is above other content */
@@ -36,13 +34,14 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     padding-bottom: .8rem;
     justify-content: center;
     align-items: center;
+    width: 4rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #my-work-btn {
     border-radius: .5rem;
     display: grid;
-    background-color: #ededed;
+    background-color: #f1f1f1;
     text-align: center;
     text-decoration: none;
     color: black;
@@ -84,13 +83,10 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 
 #add-work-form input {
     width: auto; /* Full bredde på input-feltene */
-    padding-top: 1rem; /* Gjør feltene større og lettere å klikke på */
-    padding-bottom: 1rem; /* Gjør feltene større og lettere å klikke på */
+    padding: .8rem;
     border: none; /* Subtil ramme */
     background-color: rgb(244, 244, 244);
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    font-size: 1rem;
     border-radius: .5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -103,23 +99,24 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     border: none;
     padding-top: 0;
     padding-bottom: 0;
-    height: 3.5rem;
-    width: 15rem;
+    box-sizing: border-box;
+    background-color: rgb(244, 244, 244);
+    width: 100%;
     color: black;
+    padding: .8rem;
     margin-left: auto;
     margin-right: auto;
 }
 
 #dropdown-box-place {
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: rgb(244, 244, 244);
-    border: .3rem rgb(244, 244, 244);
+    border: none;
     box-sizing: border-box;
     border-radius: .5rem;
     width: 100%;
     color: black;
-    padding-left: .5rem;
-    height: 3.5rem;
+    padding: .8rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

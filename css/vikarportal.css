@@ -1,11 +1,11 @@
 .vikarliste_element {
     display: grid;
     grid-template-columns: 60% 40%;
-    background-color: #ededed;
+    background-color: #f1f1f1;
     height: 4rem;
     text-decoration: none;
     color: black;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #0000001a;
     border-radius: .5rem;
 }
 

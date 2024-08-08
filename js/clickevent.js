@@ -9,3 +9,7 @@ document.getElementById('nav-arbeidsportal').addEventListener('click', () => {
 document.getElementById('nav-vikarportal').addEventListener('click', () => {
     window.location.href = '/html/vikarportal.html';
 });
+
+document.getElementById('my-profile').addEventListener('click', () => {
+    window.location.href = '/html/min_side.html'
+});

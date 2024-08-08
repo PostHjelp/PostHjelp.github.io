@@ -15,11 +15,11 @@
     <header>
         <nav>
             <div id="logo">PostHjelp</div>
-            <a href="/html/min_side.html" id="my-profile">
+            <div id="my-profile">
                 <div id="my-profile-container">
-                    <i class="fas fa-user" id="my-profile-logo"></i>
+                    <i class="fa-regular fa-user" id="my-profile-logo"></i>
                 </div>
-            </a>
+            </div>
         </nav>
     </header>
     <main class="min_side_main">
@@ -28,21 +28,16 @@
                 <div id="full_name_title"></div>
                 <div id="availability_title"></div>
             </div>
-            <button id="notify-button">Slå på varslinger</button>
-            <div class="status">
-                <label for="availability-status">Tilgjengelighetsstatus: </label>
-                <select id="availability-status">
-                    <option value="" disabled selected>Velg status</option>
-                    <option value="Tilgjengelig">Tilgjengelig</option>
-                    <option value="Delvis tilgjengelig">Delvis tilgjengelig</option>
-                    <option value="Ikke tilgjengelig">Ikke tilgjengelig</option>
-                </select>
-            </div>
-            <div class="administrate-btn-container">
-                <a href="brukeradministrasjon.html" id="administrate-btn" class="admin-only">
-                    <div id="administrate-btn-content">Administrer</div>
-                </a>
-            </div>
+            <select id="availability-status">
+                <option value="" disabled selected>Bytt status</option>
+                <option value="Tilgjengelig">Tilgjengelig</option>
+                <option value="Delvis tilgjengelig">Delvis tilgjengelig</option>
+                <option value="Ikke tilgjengelig">Ikke tilgjengelig</option>
+            </select>
+            <button id="notify-button">Aktiver varslinger</button>
+            <a href="brukeradministrasjon.html" id="administrate-btn" class="admin-only">
+                <div id="administrate-btn-content">Administrer</div>
+            </a>
             <button id="logout-btn">Logg ut</button>
         </section>
     </main>

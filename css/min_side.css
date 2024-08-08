@@ -1,17 +1,8 @@
-.min_side_main {
-    display: flex;
-}
-
 main section {
-    width: 90%;
-    height: 93%;
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    padding-top: 0;
-    padding-bottom: 0;
     grid-gap: 1rem;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #logout-btn {
@@ -20,25 +11,22 @@ main section {
     border: none;
     border-radius: none;
     color: black;
-    width: 100%;
-    font-size: 2.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-size: 1.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.administrate-btn-container {
-    display: grid;
-    grid-template-rows: 1fr 2fr;
 }
 
 #administrate-btn {
     display: none;
     border-radius: .5rem;
-    grid-row: 2;
     background-color: #e32d22;
     color: white;
     border: none;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     text-decoration: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -49,32 +37,34 @@ main section {
 
 .user_info_container {
     display: grid;
+    grid-template-rows: 1.3fr 1fr;
+    background-color: #ededed;
+    border-radius: .5rem;
+    height: 7.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#full_name_title, #availability_title {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 #full_name_title {
-    font-size: 2.25rem;
-    display: flex;
+    font-size: 1.5rem;
+    display: grid;
     align-items: center;
-    justify-content: center;
-    text-align: center;
     font-weight: bold;
+    border-bottom: solid rgb(127, 127, 127) .5px;
 }
 
 #availability_title {
-    font-size: 1.75rem;
-    display: flex;
+    font-size: 1.2rem;
+    display: grid;
     align-items: center;
-    justify-content: center;
-}
-
-label {
-    justify-content: center;
-    align-items: center;
-    display: flex;
 }
 
 #availability-status {
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-radius: none;
     background-color: #ededed;
     border: .3rem #ededed;
@@ -83,6 +73,8 @@ label {
     color: black;
     border-radius: .5rem;
     padding-left: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -99,14 +91,13 @@ label {
 #notify-button {
     border-radius: .5rem;
     display: grid;
-    background-color: green;
+    color: green;
     text-align: center;
     text-decoration: none;
-    color: white;
     border: none;
-    font-size: 1.7rem;
-    padding-top: .7rem;
-    padding-bottom: .7rem;
+    font-size: 1.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
