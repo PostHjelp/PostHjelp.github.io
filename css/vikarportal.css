@@ -1,7 +1,7 @@
 .vikarliste_element {
     display: grid;
     grid-template-columns: 60% 40%;
-    background-color: #f1f1f1;
+    background-color: #f8f8f8;
     height: 4rem;
     text-decoration: none;
     color: black;

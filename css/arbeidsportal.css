@@ -41,7 +41,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #my-work-btn {
     border-radius: .5rem;
     display: grid;
-    background-color: #f1f1f1;
+    background-color: #f8f8f8;
     text-align: center;
     text-decoration: none;
     color: black;
@@ -56,7 +56,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 .add-work-container, #confirmation-container {
     margin-top: 5%;
     margin-bottom: 5%;
-    background-color: #eaeaea;
+    background-color: #f8f8f8;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -176,7 +176,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
     display: grid;
     grid-gap: .7rem;
     text-align: center;
-    background-color: #ededed;
+    background-color: #f8f8f8;
     padding-bottom: 0;
     width: 100%;
     padding-top: 0;
@@ -254,7 +254,7 @@ section .my-work-header, .confirmation-messages-element, .work-btn {
 #work-sort, #work-sort-pip, #work-sort-place {
     font-size: .9rem;
     border-radius: none;
-    background-color: #ededed;
+    background-color: #f8f8f8;
     border: .3rem #ededed;
     box-sizing: border-box;
     width: 100%;

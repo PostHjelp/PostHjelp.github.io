@@ -3,7 +3,7 @@ html, body {
     margin: 0;     /* Fjerner standardmarg */
     padding: 0;    /* Fjerner standardputting */
     font-family: 'Noto Sans Display', sans-serif;
-    background-color: #e6e6e6;
+    background-color: #f1f1f1;
 }
 
 header, footer {
